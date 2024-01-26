@@ -1,0 +1,53 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## My Work
+
+**Website**
+<br>
+
+* [**Webflow**](https://ls-portfolio-f75f03.webflow.io/)
+<br>
+
+* [**Wix**](https://lennydeces.wixsite.com/portfolio)
+<br>
+<br>
+
+**Platform**
+<br>
+
+* [**Tableau**](https://public.tableau.com/app/profile/lufthansa.lufthansa)
+<br>
+
+* [**GitHub**](https://github.com/ls5340)
+<br>
+
+  * [**Python**](https://github.com/ls5340/CRH/blob/main/CRH.ipynb)
+<br>
+
+  * [**R**](https://rpubs.com/lennydeces/989406) 
+<br>
+
+* [**ArcGIS**](https://cugis.maps.arcgis.com/home/user.html)
+<br>
+
+  * [**StoryMaps**](https://storymaps.arcgis.com/stories/8a2f0bbff83047d79928ff9cdab1fbd0)
+<br>
+
+  * [**Web Application**](https://cugis.maps.arcgis.com/apps/View/index.html?appid=21c922227c9a4d8cb47d01dd622024a8)
+<br>
+<br>
+
+## My Embedded Work
+
+**Adobe Suite**
+<b>
+
+<iframe width="780" height="500" src="https://wixlabs-pdf-dev.appspot.com/assets/pdfjs/web/viewer.html?file=%2Fpdfproxy%3Finstance%3Du4wXq1L_XaMexsMgnsTfMzXehZOn0B5fNUXX3L3nRQk.eyJpbnN0YW5jZUlkIjoiMDQ0NjNjMjUtYjZiZi00N2IyLWIwY2UtYzBmNDQ2NTNlNDhmIiwiYXBwRGVmSWQiOiIxM2VlMTBhMy1lY2I5LTdlZmYtNDI5OC1kMmY5ZjM0YWNmMGQiLCJtZXRhU2l0ZUlkIjoiYzlmZmMyZDctNWJjMC00YTI1LWJiMTAtZWY0MjNhM2ZlZGZmIiwic2lnbkRhdGUiOiIyMDIyLTEwLTE2VDIxOjU3OjQ4LjU4M1oiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6IjE1M2ExYTU4LWVjOTAtNDZmMy05ODczLTFhZGU2YjY4YzI3YyIsImJpVG9rZW4iOiJjZGI5ZmVmMi1lZDdmLTBkOTctMGJkZS0yZmI2N2M2YzA5NzAiLCJzaXRlT3duZXJJZCI6IjUyZmE4ZTVlLWIyZjgtNGZjNy04OTJjLTAyODdjZjcyOTFkYiJ9%26compId%3Dcomp-kuyb1btu%26url%3Dhttps%3A%2F%2Fdocs.wixstatic.com%2Fugd%2F52fa8e_b328eadfa0274c2eac24b741d8f24043.pdf#page=1&links=true&originalFileName=CR0WDsource%20Deconstruction%20ResourceGuide.Aug21&locale=en&allowDownload=true&allowPrinting=true" title="ls929's Adobe Suite"></iframe>
+<br>
+<br>

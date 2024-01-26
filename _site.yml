@@ -1,0 +1,21 @@
+name: "our-website"
+navbar:
+  title: "Our Collaborative Website"
+  left:
+    - text: "Home"
+      href: Home.html
+    - text: "About"
+      menu:
+        - text: "Note"
+          href: Note.html
+        - text: "Resource"
+          href: Resource.html
+    - text: "Contact"
+      href: Contact.html
+output_dir: "."
+output:
+  html_document:
+    theme: cerulean
+    highlight: textmate
+    toc: true
+    toc_float: true 

@@ -1,0 +1,40 @@
+---
+output: html_document
+---
+
+# About Me
+- an MAT-and-ECO double undergraduate major (Stony Brook) and an MRP graduate major (Cornell)
+
+- love playing board games and love playing sports games
+
+<details>
+  <summary>***click to expand***</summary>
+He earned his Bachelor’s Degree in Mathematics and Economics from Stony Brook University (2020) and his Master’s Degree in Regional Planning from Cornell University (2022). His interest in economic geography and public service motivates him to pursue a planning-related career. Lei is originally from Shanghai, the most populous municipality in China, which has witnessed the vicissitudes in China. Besides his remarkable extra-curricular achievements (Go Club at Stony Brook; Friends of ELSO at Cornell), he actively participated in the cooperative academic projects of Broome County Transit Front Garden Redesign and Tompkins Consolidated Area Transit Route Redesign. 
+
+As research assistant and student collaborator, He was instrumental in analyzing and visualizing complex data related to demolition and building waste streams in New York State. Through his work, he contributed to a resource guide and presented his findings to numerous associations and organizations across the state. He feels a sense of belonging to the planning-related work because of his enthusiasm for creating smart cities for people to live in. Laying a solid foundation in applied mathematics and economics, Lei would like to devote himself to urban data science. 
+
+<br>
+
+![](https://sbpress.com/wp-content/uploads/2020/03/Screen-Shot-2020-03-01-at-2.26.57-PM.png)
+<center>**Stony Brook University Go Club**</center>
+
+<br>
+
+![](https://www.stonybrook.edu/commcms/orientation/about-us/_images/ISA%20Staff%20Pic%20Summer%202019.jpg)
+
+<center>**Stony Brook University International Student Ambassador**</center>
+</details>
+
+<br>
+
+#### After Graduation
+[Walkspan](https://www.walkspan.com/new-page-2)
+
+<br>
+
+#### Before Graduation
+[Susan Christopherson Center for Commmunity Planning](https://www.christophersoncenter.org/copy-of-jason-page)
+
+<br>
+
+
