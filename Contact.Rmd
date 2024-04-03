@@ -1,0 +1,57 @@
+---
+title: "Contact"
+author: ""
+date: ""
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r,include=FALSE}
+library(leaflet)
+library(tibble)
+wonders <- tibble(
+  place = c("New York City", "Stony Brook", "Ithaca"),
+  lon = c(-74.0060, -73.1409, -76.5019),
+  lat = c(40.7128, 40.9257, 42.4440))
+
+
+leaflet(options = leafletOptions(
+                    # Set minZoom and dragging 
+                    minZoom = 12, dragging = TRUE))  %>% 
+  addProviderTiles("CartoDB")  %>% 
+  
+  # Set default zoom level 
+  setView(lng = wonders$lon[1], lat = wonders$lat[1], zoom = 10) %>% 
+  
+  # Set max bounds of map 
+  setMaxBounds(lng1 = wonders$lon[1] + .05, 
+               lat1 = wonders$lat[1] + .05, 
+               lng2 = wonders$lon[1] - .05, 
+               lat2 = wonders$lat[1] - .05) 
+```
+
+```{r,echo=FALSE}
+leaflet() %>%
+  addProviderTiles("OpenStreetMap") %>%
+  addMarkers(lng = wonders$lon[1], lat = wonders$lat[1])
+```
+<left>**New York City**</left>
+
+```{r,echo=FALSE}
+wondersMap <- leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng = wonders$lon, lat = wonders$lat,
+             popup = wonders$place)
+
+## We can add layers to the existing leaflet R object
+
+map_zoom <- wondersMap %>%
+  setView(lng = wonders$lon[3], lat = wonders$lat[3], zoom = 5)
+
+map_zoom
+```
+
+<left>**New York City = avg(Stony Brook,Ithaca)**</left>

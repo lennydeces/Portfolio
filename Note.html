@@ -1,0 +1,2253 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Note</title>
+
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Our Collaborative Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Home.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    About
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Note.html">Note</a>
+    </li>
+    <li>
+      <a href="Resource.html">Resource</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="Contact.html">Contact</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Note</h1>
+
+</div>
+
+
+<details>
+<summary>
+<strong><em>Cornell Student Life Program</em></strong>
+</summary>
+<p><strong>MacBook Air</strong></p>
+<p>System Preferences…➡️️️Dock➡️️️Tick Magnification System
+Preferences…➡️️️Dock➡️️️Animate opening applications System
+Preferences…➡️️️Security &amp; Privacy System
+Preferences…➡️️️Keyboard➡️️️Shortcuts➡️️️Mission Control➡️️️Untick Show Desktop
+F11 &amp; Show Dashboard F12 System
+Preferences…➡️️️Keyboard➡️️️Keyboard➡️️️Tick Turn keyboard backlight off after
+… of inactivity System Preferences…➡️️️Keyboard➡️️️Keyboard➡️️️Untick Use F1,
+F2, etc. keys as standard function keys System
+Preferences…➡️️️Keyboard➡️️️Input Sources➡️️️Tick Select the previous input
+source | Tick Select next source in Input menu System
+Preferences…➡️️️Sound➡️️️Untick Play user interface sound effects System
+Preferences…➡️️️Startup Disk➡️️️BOOTCAMP Windows➡️️️Restart…</p>
+<p>Finder➡️️️Preferences…➡️️️Sidebar</p>
+<p>File➡️️️New Folder➡️️️Drag and Drop to Favorites Sidebar</p>
+<p>Go➡️️️Home➡️️️Pictures</p>
+<p>Option➡️️️Macintosh HD | Windows</p>
+<p>Favorites➡️️️Downloads➡️️️Documents Multiple Select➡️️️Rename n items…</p>
+<p>Chrome | Safari➡️️️Preferences…➡️️️Search engine
+Chrome➡️️️…➡️️️Bookmarks➡️️️Bookmark Manager➡️️️Drag and Drop Chrome➡️️️…➡️️️More
+Tools➡️️️Extensions</p>
+<p>Command + Space➡️️️Activity Monitor Shift + Window + S = Screenshot
+Window + L = Lockscreen <br> <br></p>
+<p><strong>App Store</strong></p>
+<p>View Information➡️️️Change Country or Region <br> <br></p>
+<p><strong>Boot Camp</strong></p>
+<p><a href="https://www.youtube.com/watch?v=Hmm9Q-T0oTo"
+class="uri">https://www.youtube.com/watch?v=Hmm9Q-T0oTo</a>
+Applications➡️️️Utilities➡️️️Boot Camp Assistant➡️️️Install</p>
+<p>Start➡️️️Apple Software Update➡️️️</p>
+<p>^➡️️️Boot Camp➡️️️Restart in macOS… <br> <br></p>
+<p><strong>Microsoft Remote Desktop</strong></p>
+<p>Right Click➡️️️Open with➡️️️Microsoft Remote Desktop <br> <br></p>
+<p><strong>Parallels</strong></p>
+<p>Home➡️️️View My Parallels Products Home➡️️️Change My Account
+Settings➡️️️Delete Account <br> <br></p>
+<p><strong>AlternativeTo</strong></p>
+<p><a href="https://alternativeto.net/"
+class="uri">https://alternativeto.net/</a> <br> <br></p>
+<p><strong>LinkedIn</strong></p>
+<p>Drop Down➡️️️View Profile Drop Down➡️️️Account➡️️️Access My Premium➡️️️Manage
+subscription</p>
+<p>My Network➡️️️People | Follow <br> <br></p>
+<p><strong>Miaojian</strong></p>
+<p>做视频➡️️️从相册选取视频或照片➡️️️视频➡️️️点击中央➡️️️||➡️️️音乐➡️️️搜索➡️️️歌单分类➡️️️剪辑常用
+做视频➡️️️从相册选取视频或照片➡️️️视频➡️️️点击中央➡️️️||➡️️️音乐➡️️️搜索➡️️️导入音乐➡️️️从视频提取
+做视频➡️️️从相册选取视频或照片➡️️️视频➡️️️点击中央➡️️️||➡️️️音乐➡️️️取消视频原声
+<br> <br></p>
+<p><strong>WeChat</strong></p>
+Settings➡️️️General➡️️️Storage➡️️️Cache➡️️️Clear
+</details>
+<details>
+<summary>
+<strong><em>Cornell Adobe Program</em></strong>
+</summary>
+<p><strong>Adobe Audition</strong></p>
+<p>File➡️️️Open Append➡️️️To New…</p>
+<p>Window➡️️️Tick Diagnostics <br> <br></p>
+<p><strong>Adobe Color</strong></p>
+<p>Color Wheel➡️️️Apply Color Harmony Rule➡️️️Analogous | Monochromatic |
+Triad | Complementary | Split Complementary | Double Split Complementary
+| Square | Compound | Shades | Custom➡️️️Save LIBRARIES➡️️️YOUR
+LIBRARY➡️️️Hover around My Color Theme➡️️️Download as JPEG LIBRARIES➡️️️YOUR
+LIBRARY➡️️️Double Click on My Color Theme➡️️️Delete</p>
+<p>Shift + Command + V = Paste the Format <br> <br></p>
+<p><strong>Adobe Illustrator</strong></p>
+<p>File➡️️️Export | Export Selection…</p>
+<p>Object➡️️️Transform➡️️️Move… | Rotate… | Reflect… | Scale… | Shear…
+Object➡️️️Path➡️️️Offset Path…</p>
+<p>Type➡️️️Create Outlines</p>
+<p>Window➡️️️Workspace➡️️️Essentials Classic</p>
+<p>Selection Tool = V white &amp; unfilled (Outer Part Movement) with
+dimension changed</p>
+<p>Direct Selection Tool = A black &amp; filled (Inner Whole Movement)
+without dimension changed</p>
+<p>Right Click➡️️️Rectangle Tool | Ellipse Tool | Polygon Star Tool | Line
+Segment Tool➡️️️Effect➡️️️Distort &amp; Transform➡️️️Zig Zag…➡️️️Points | Ridges
+per segment: | Points Right Click➡️️️Type Tool | Type on a Path Tool |
+Vertical Type Tool Right Click➡️️️Rotate Tool | Scale Tool | Reflect Tool
+| Shear Tool</p>
+<p>Right Click on Shape Builder Tool | Live Bucket Tool | Live Paint
+Selection</p>
+<p>Click on Artboards➡️️️Preset: ➡️️️Portrait | Landscape</p>
+<p>Properties➡️️️Align➡️️️…➡️️️Align Objects: | Distribute Objects: |
+Distribute Spacing: Right Click➡️️️Arrange➡️️️Bring to Front | Bring Forward
+| Send Backward | Send to Back Select Object➡️️️Group | Join Command + A =
+Select Command + Shift + A = Deselect <br> <br></p>
+<p><strong>Adobe InDesign</strong></p>
+<p>Home | Learn | Create new | Open InDesign➡️️️Preferences➡️️️Units &amp;
+Increments…➡️️️Ruler Units➡️️️Horizontal: | Vertical:
+InDesign➡️️️Preferences➡️️️Type➡️️️Apply Leading to Entire Paragraphs
+InDesign➡️️️Preferences➡️️️Autocorrect…➡️️️Tick Enable Autocorrect | Tick
+Autocorrect Capitalization Errors</p>
+<p>File➡️️️New➡️️️Document…➡️️️Units➡️️️Drop Down➡️️️Inches
+File➡️️️New➡️️️Document…➡️️️Untick Facing Pages File➡️️️Place…
+File➡️️️Export…➡️️️Format➡️️️Adobe PDF (Interactive) File➡️️️Publish Online
+Dashboard… File➡️️️Document Setup➡️️️Untick Facing Pages File➡️️️Print…</p>
+<p>Edit➡️️️Select All</p>
+<p>Layout➡️️️Margins and Columns…➡️️️Tick Preview➡️️️Columns➡️️️Number: |
+Gutter:</p>
+<p>Type➡️️️Change Case➡️️️UPPERCASE | lowercase | Title Case | Sentence case
+Type➡️️️Fill with Placeholder Text Type➡️️️Show Hidden Characters | Hide
+Hidden Characters Type➡️️️Command + A➡️️️Paragraph Formatting
+Controls➡️️️Untick Hyphenate</p>
+<p>Object➡️️️Transform➡️️️Reference Point➡️️️Rotate 90° CW | Rotate 90° CCW
+Object➡️️️Group | Ungroup Object➡️️️Lock | Unlock All on Spread Object➡️️️Hide
+| Show All on Spread Object➡️️️Text Frame Options…➡️️️Vertical
+Justification➡️️️Align:➡️️️Drop Down➡️️️Center Object➡️️️Effects Object➡️️️Corner
+Options…➡️️️Drop Down➡️️️Rounded Object➡️️️Pathfinder➡️️️Add | Subtract |
+Intersect | Exclude Overlap | Minus Back (Combine/Join) Object➡️️️Convert
+Shape | Convert Point</p>
+<p>Table➡️️️Create Table… | Table Options | Cell Options</p>
+<p>View➡️️️Zoom In | Zoom Out View➡️️️Fit Page in Window View➡️️️Show
+Rulers➡️️️Drag from Outside Ruler To Inside Ruler View➡️️️Display
+Performance➡️️️High Quality Display View➡️️️Extras➡️️️Show Text Threads
+View➡️️️Grids &amp; Guides➡️️️Tick Smart Guides</p>
+<p>Window➡️️️Interactive➡️️️Color➡️️️Swatches Window➡️️️Interactive➡️️️EPUB
+Interactivity Preview Window➡️️️Layers Window➡️️️Object &amp; Layout➡️️️Align
+Window➡️️️Tick Properties➡️️️Appearance➡️️️Fill | Stroke | Opacity
+Window➡️️️Tick Properties➡️️️Character➡️️️Set the Tracking for selected
+characters Window➡️️️Tick Properties➡️️️Paragraph➡️️️Shading | Border
+Window➡️️️Tick Properties➡️️️Paragraph➡️️️Bullets and Numbering</p>
+<p>Help➡️️️Sign Out…</p>
+<p>Selection Tool (Outside Adjustment) + Long Hold | Double Click Direct
+Selection Tool (Inside Adjustment) + Long Hold | Double Click</p>
+<p>Right Click on Rectangle Frame Tool | Ellipse Frame Tool | Polygon
+Frame Tool Right Click on Rectangle Tool | Ellipse Tool | Polygon
+Tool</p>
+<p>Right Click on Type Tool | Type on a Path Tool (Line Tool + Shift =
+Horizontal / Vertical)</p>
+<p>Right Click on Pen Tool | Add Anchor Point Tool | Delete Anchor Point
+Tool | Convert Direction Point Tool Right Click on Color Theme Tool |
+Eyedropper Tool | Measure Tool Zoom Tool</p>
+<p>Right Click on Image➡️️️Fitting Right Click on Image➡️️️Arrange |
+Lock</p>
+<p>Character Formatting Controls➡️️️Drop Down➡️️️Filters➡️️️Drop Down</p>
+<p>Essentials➡️️️Drop Down➡️️️Advanced Essentials➡️️️Drop Down➡️️️Digital
+Publishing➡️️️Animation | Hyperlinks</p>
+<p>Pages➡️️️Edit page size | Create New Page | Delete selected pages
+Layers➡️️️Create New Page | Delete selected layers Links➡️️️Relink…</p>
+<p>Stroke➡️️️Weight Swatches➡️️️Right Click on Swatch➡️️️New Color
+Swatch➡️️️Untick Name with Color Value Drag Swatches &amp; Drop
+Gradient</p>
+<p>Google➡️️️Images➡️️️Tools➡️️️Size➡️️️Large Google➡️️️Images➡️️️Tools➡️️️Usage
+Rights➡️️️Creative Commons licenses</p>
+<p>Command + 0 = Pin to Center Command + Shift + Image = Proportionally
+Resize Image Command + Shift + Option + C = Copy Object of the Same
+Place Command + Shift + Option + V = Paste Object of the Same Place F =
+Rectangle Frame Tool (Frame) M = Rectangle Tool (Box) T = Type Tool
+(Text) W = Print (Preview) <br> <br></p>
+<p><strong>Adobe Photoshop</strong></p>
+<p>File➡️️️Export➡️️️Quick Export as PNG
+Image➡️️️Adjustments➡️️️Brightness/Contrast… | Levels… | Curves… | Exposure…
+Image➡️️️Adjustments➡️️️Hue/Saturation… | Color Balance…</p>
+<p>Image➡️️️Auto Contrast</p>
+<p>Layer➡️️️Create Clipping Mask Layer➡️️️Smart Objects➡️️️Rasterize</p>
+<p>Opacity=100% | Tolerance=0</p>
+<p>Move➡️️️Tick Auto-Select</p>
+<p>Lasso tool➡️️️Move tool</p>
+<p>Quick Selection Tool➡️️️Click on Object➡️️️Option➡️️️Delete | Command + X
+Magic Wand Tool➡️️️Click on Object➡️️️Select➡️️️Similar➡️️️Delete | Command +
+X</p>
+<p>Eyedropper Tool➡️️️Click on Origin Area➡️️️Paint Bucket Tool➡️️️Click on
+Destination Area</p>
+<p>Brush Tool➡️️️Drop Down Size | Hardness Pencil Tool➡️️️Drop Down Size |
+Hardness</p>
+<p>Eraser Tool➡️️️Drop Down➡️️️Size | Hardness</p>
+<p>Pen Tool➡️️️Drop Down➡️️️Shape➡️️️Click on origin➡️️️Click on destination</p>
+<p>Layers➡️️️Drop Down➡️️️Darken | Multiply Layer➡️️️Create a new layer |
+Delete layer Layer➡️️️Double Click on Layer Thumbnail➡️️️Blending
+Options➡️️️fx Drop Down➡️️️Show All Effects Layer➡️️️Double Click on Layer
+Thumbnail➡️️️Blending Options➡️️️Tick Drop Shadow</p>
+<p>Select➡️️️All➡️️️Select➡️️️Modify➡️️️Contract…➡️️️Select➡️️️Feather…➡️️️Select➡️️️Inverse➡️️️Edit➡️️️Cut</p>
+<p>Filter➡️️️Render➡️️️Tree…</p>
+<p>Right Click on Object➡️️️Scale | Rotate | Skew | Perspective | Distort
+Right Click on Layer➡️️️Rasterize Layer | Create Clipping Mask</p>
+<p>Command + T = Transform Move Tool + Option + Click = Copy and Paste
+Move Tool + Right Click on Object = Information</p>
+<p>Search for Photoshop Aerial Plan Replacement <br> <br></p>
+<p><strong>Adobe Premiere Pro + Adobe Media Encoder</strong></p>
+<p>File➡️️️Export➡️️️Media…➡️️️Format:➡️️️H.264</p>
+<p>Editing➡️️️Video➡️️️Motion➡️️️Scale Height Editing➡️️️Video➡️️️Motion➡️️️Scale
+Width➡️️️Tick Uniform Scale | Untick Uniform Scale
+Editing➡️️️Video➡️️️Motion➡️️️Rotation</p>
+<p>Effects➡️️️Video Effects | Video Transitions Effects➡️️️Essential
+Graphics</p>
+<p>Double Click on Program:➡️️️Move the video graph</p>
+<p>Razor Tool➡️️️Click on video range➡️️️Selection Tool➡️️️Move the video
+range</p>
+Right Click➡️️️Unlink (separate video from audio)
+</details>
+<details>
+<summary>
+<strong><em>Cornell Data Program</em></strong>
+</summary>
+<p><strong>Numbers</strong></p>
+<p>File➡️️️New… File➡️️️Open…</p>
+<p>Option Up/Down/Left/Right = Insert Rows/Columns Shift + Command + V =
+Paste the Format <br> <br></p>
+<p><strong>America’s Infrastructure Report Card</strong></p>
+<p><a
+href="https://infrastructurereportcard.org/state-by-state-infrastructure/"
+class="uri">https://infrastructurereportcard.org/state-by-state-infrastructure/</a>
+<br> <br></p>
+<p><strong>American Community Survey</strong></p>
+<p>EXPLORE DATA➡️️️Explore Data Main➡️️️GO TO DATA.CENSUS.GOV➡️️️Advanced
+Search➡️️️Geography➡️️️State | County➡️️️All States within United States,
+Puerto Rico, and the Island Areas | All Counties within United States,
+Puerto Rico</p>
+<p>EXPLORE DATA➡️️️Explore Data Main➡️️️GO TO DATA.CENSUS.GOV➡️️️Advanced
+Search➡️️️ Search➡️️️Search for a filter➡️️️Topics➡️️️Maps➡️️️Layer➡️️️State |
+County</p>
+<p>EXPLORE DATA➡️️️Explore Data Main➡️️️GO TO DATA.CENSUS.GOV➡️️️Advanced
+Search➡️️️ Search➡️️️Search for a filter➡️️️Topics➡️️️Maps➡️️️Basemap➡️️️Basic |
+Detailed | None</p>
+<p>EXPLORE DATA➡️️️Explore Data Main➡️️️GO TO DATA.CENSUS.GOV➡️️️Advanced
+Search➡️️️ Search➡️️️Search for a filter➡️️️Topics➡️️️Maps➡️️️Classes➡️️️Natural |
+Quantile | Equal Interval | Manual➡️️️Data Classes➡️️️&lt; | &gt;</p>
+<p>EXPLORE DATA➡️️️Explore Data Main➡️️️GO TO DATA.CENSUS.GOV➡️️️Advanced
+Search➡️️️ Search➡️️️Search for a filter➡️️️Topics➡️️️Maps➡️️️More Tools➡️️️Table |
+Notes <br> <br></p>
+<p><strong>American Time Use Survey</strong></p>
+<p><a href="https://www.bls.gov/tus/home.htm#data"
+class="uri">https://www.bls.gov/tus/home.htm#data</a> <br> <br></p>
+<p><strong>Bureau of Transportation Statistics</strong></p>
+<p>Statistical Products and Data➡️️️Airline Information for
+Download➡️️️Origin and Destination Data Statistical Products and
+Data➡️️️State Transportation Statistics <br> <br></p>
+<p><strong>City Population</strong></p>
+<p><a href="http://www.citypopulation.de/"
+class="uri">http://www.citypopulation.de/</a> <br> <br></p>
+<p><strong>DataBank</strong></p>
+<p>World Bank Open Data➡️️️DataBank <br> <br></p>
+<p><strong>Data Explorer</strong></p>
+<p><a href="https://www.data-explorer.com/"
+class="uri">https://www.data-explorer.com/</a> <br> <br></p>
+<p><strong>FRED Economic Data</strong></p>
+<p><a
+href="https://fred.stlouisfed.org/?gclid=Cj0KCQiAqvaNBhDLARIsAH1Pq52WPhdGgk5D6L7_w101Ks1mFPCJ3nvVUXwuF_17i5g3WNwWdlkXzhsaAhlbEALw_wcB"
+class="uri">https://fred.stlouisfed.org/?gclid=Cj0KCQiAqvaNBhDLARIsAH1Pq52WPhdGgk5D6L7_w101Ks1mFPCJ3nvVUXwuF_17i5g3WNwWdlkXzhsaAhlbEALw_wcB</a>
+<br> <br></p>
+<p><strong>IPUMS</strong></p>
+<p><a href="https://www.ipums.org/"
+class="uri">https://www.ipums.org/</a> <br> <br></p>
+<p><strong>SimplyAnalytics</strong></p>
+<p>Support➡️️️Help Center | Replay Tutorial <br> <br></p>
+<p>New View➡️️️Map➡️️️Create <br> <br></p>
+<p><strong>Social Explorer</strong></p>
+<p>More➡️️️Take a tour</p>
+<p>Explore Maps➡️️️Explore &gt;➡️️️Change data➡️️️More options➡️️️Hover |
+Click</p>
+<p>Tables➡️Begin Report | More info</p>
+<p>Demographic Profiles <br> <br></p>
+<p><strong>USAFacts</strong></p>
+<p><a href="https://usafacts.org/state-of-the-union/"
+class="uri">https://usafacts.org/state-of-the-union/</a> <br> <br></p>
+<p><strong>USDA</strong></p>
+<p><a
+href="https://www.ers.usda.gov/data-products/county-level-data-sets/"
+class="uri">https://www.ers.usda.gov/data-products/county-level-data-sets/</a>
+<br> <br></p>
+<p><strong>CoCalc</strong></p>
+<p>Cut Selected Command + Enter = Transfer from Markdown to Text <br>
+<br></p>
+<p><strong>Jupyter Notebook</strong></p>
+<p>File➡️️️Open…➡️️️Upload File➡️️️Download as</p>
+<p>Kernel➡️️️Restart &amp; Clear Output</p>
+<p>Help➡️️️Keyboard Shortcuts</p>
+<p>Drop Down➡️️️ Markdown➡️️️Insert Image</p>
+<p>Command + Enter = Transfer from Markdown to Text</p>
+<p>A = Insert Cell Above B = Insert Cell Below</p>
+<p>%lsmagic = Available line magics <br> <br></p>
+<p><strong>Plotly</strong></p>
+<p><a href="https://nicolas.kruchten.com/"
+class="uri">https://nicolas.kruchten.com/</a> Nicolas Kruchten</p>
+<p><a href="https://plotly.com/python/scientific-charts/"
+class="uri">https://plotly.com/python/scientific-charts/</a> Plotly
+Python Open Source Graphing Library Scientific Charts</p>
+<p><a href="https://plotly.com/python/plotly-express/"
+class="uri">https://plotly.com/python/plotly-express/</a> Plotly Express
+in Python</p>
+<p><a href="https://www.youtube.com/channel/UCqBFsuAz41sqWcFjZkqmJqQ"
+class="uri">https://www.youtube.com/channel/UCqBFsuAz41sqWcFjZkqmJqQ</a>
+Charming Data <br> <br></p>
+<p><strong>eMathHelp</strong></p>
+<p><a href="https://www.emathhelp.net/en/"
+class="uri">https://www.emathhelp.net/en/</a> <br> <br></p>
+<p><strong>Graph Online</strong></p>
+<p><a href="https://graphonline.ru/en/"
+class="uri">https://graphonline.ru/en/</a> Graph➡️️️Workspace screenshot |
+Graph rename <br> <br></p>
+<p><strong>GraphPad</strong></p>
+<p><a href="https://www.graphpad.com/quickcalcs/pvalue1.cfm"
+class="uri">https://www.graphpad.com/quickcalcs/pvalue1.cfm</a> <br>
+<br></p>
+<p><strong>Graph Plotter</strong></p>
+<p><a href="https://www.transum.org/Maths/Activity/Graph/Desmos.asp"
+class="uri">https://www.transum.org/Maths/Activity/Graph/Desmos.asp</a>
+<br> <br></p>
+<p><strong>Graphviz Online</strong></p>
+<p><a
+href="https://dreampuf.github.io/GraphvizOnline/#digraph%20G%20%7B%0A%0A%20%20subgraph%20cluster_0%20%7B%0A%20%20%20%20style%3Dfilled%3B%0A%20%20%20%20color%3Dlightgrey%3B%0A%20%20%20%20node%20%5Bstyle%3Dfilled%2Ccolor%3Dwhite%5D%3B%0A%20%20%20%20a0%20-%3E%20a1%20-%3E%20a2%20-%3E%20a3%3B%0A%20%20%20%20label%20%3D%20%22process%20%231%22%3B%0A%20%20%7D%0A%0A%20%20subgraph%20cluster_1%20%7B%0A%20%20%20%20node%20%5Bstyle%3Dfilled%5D%3B%0A%20%20%20%20b0%20-%3E%20b1%20-%3E%20b2%20-%3E%20b3%3B%0A%20%20%20%20label%20%3D%20%22process%20%232%22%3B%0A%20%20%20%20color%3Dblue%0A%20%20%7D%0A%20%20start%20-%3E%20a0%3B%0A%20%20start%20-%3E%20b0%3B%0A%20%20a1%20-%3E%20b3%3B%0A%20%20b2%20-%3E%20a3%3B%0A%20%20a3%20-%3E%20a0%3B%0A%20%20a3%20-%3E%20end%3B%0A%20%20b3%20-%3E%20end%3B%0A%0A%20%20start%20%5Bshape%3DMdiamond%5D%3B%0A%20%20end%20%5Bshape%3DMsquare%5D%3B%0A%7D"
+class="uri">https://dreampuf.github.io/GraphvizOnline/#digraph%20G%20%7B%0A%0A%20%20subgraph%20cluster_0%20%7B%0A%20%20%20%20style%3Dfilled%3B%0A%20%20%20%20color%3Dlightgrey%3B%0A%20%20%20%20node%20%5Bstyle%3Dfilled%2Ccolor%3Dwhite%5D%3B%0A%20%20%20%20a0%20-%3E%20a1%20-%3E%20a2%20-%3E%20a3%3B%0A%20%20%20%20label%20%3D%20%22process%20%231%22%3B%0A%20%20%7D%0A%0A%20%20subgraph%20cluster_1%20%7B%0A%20%20%20%20node%20%5Bstyle%3Dfilled%5D%3B%0A%20%20%20%20b0%20-%3E%20b1%20-%3E%20b2%20-%3E%20b3%3B%0A%20%20%20%20label%20%3D%20%22process%20%232%22%3B%0A%20%20%20%20color%3Dblue%0A%20%20%7D%0A%20%20start%20-%3E%20a0%3B%0A%20%20start%20-%3E%20b0%3B%0A%20%20a1%20-%3E%20b3%3B%0A%20%20b2%20-%3E%20a3%3B%0A%20%20a3%20-%3E%20a0%3B%0A%20%20a3%20-%3E%20end%3B%0A%20%20b3%20-%3E%20end%3B%0A%0A%20%20start%20%5Bshape%3DMdiamond%5D%3B%0A%20%20end%20%5Bshape%3DMsquare%5D%3B%0A%7D</a>
+<br> <br></p>
+<p><strong>hackerearth</strong></p>
+<p><a href="https://www.hackerearth.com/practice/"
+class="uri">https://www.hackerearth.com/practice/</a> <br> <br></p>
+<p><strong>Livegap Charts</strong></p>
+<p><a href="https://charts.livegap.com/?lan=en#TypesofCharts"
+class="uri">https://charts.livegap.com/?lan=en#TypesofCharts</a> <br>
+<br></p>
+<p><strong>Mathpix</strong></p>
+<p>Go to Snip Notes Right Click➡️️️Show Math As➡️️️MathML Code➡️️️Select
+All➡️️️Command + C➡️️️Command + V➡️️️Copy Text➡️️️Paste Text➡️️️Paste
+Options➡️️️Keep Text Only</p>
+<p>Right Click➡️️️Copy Image➡️️️Paste Special…➡️️️Picture(TIFF) <br> <br></p>
+<p><strong>Matrix calculator</strong></p>
+<p><a href="https://matrixcalc.org/en/"
+class="uri">https://matrixcalc.org/en/</a> <br> <br></p>
+<p><strong>Omni Calculator</strong></p>
+<p><a href="https://www.omnicalculator.com/"
+class="uri">https://www.omnicalculator.com/</a> <br> <br></p>
+<p><strong>R Graph Gallery</strong></p>
+<p><a href="https://www.r-graph-gallery.com/all-graphs.html"
+class="uri">https://www.r-graph-gallery.com/all-graphs.html</a> <br>
+<br></p>
+<p><strong>RapidTables</strong></p>
+<p><a href="https://www.rapidtables.com/tools/scatter-plot.html"
+class="uri">https://www.rapidtables.com/tools/scatter-plot.html</a> <br>
+<br></p>
+<p><strong>Symbolab</strong></p>
+<p><a href="https://www.symbolab.com/solver/calculus-calculator"
+class="uri">https://www.symbolab.com/solver/calculus-calculator</a> <br>
+<br></p>
+<p><strong>WolframAlpha</strong></p>
+<p><a href="https://www.wolframalpha.com/"
+class="uri">https://www.wolframalpha.com/</a> <br> <br></p>
+<p><strong>Gapminder Tools</strong></p>
+<p><a
+href="https://www.gapminder.org/tools/?from=world#$chart-type=bubbles&amp;url=v1"
+class="uri">https://www.gapminder.org/tools/?from=world#$chart-type=bubbles&amp;url=v1</a>
+<br> <br></p>
+<p><strong>Gapminder World</strong></p>
+<p><a href="https://www.gapminder.org/tag/gapminder-world/"
+class="uri">https://www.gapminder.org/tag/gapminder-world/</a> <br>
+<br></p>
+<p><strong>Monday</strong></p>
+<p><a href="https://lennydeces.monday.com/"
+class="uri">https://lennydeces.monday.com/</a> ?➡️️️Help Center | Getting
+Started | What’s New <br> <br></p>
+<p><strong>Picker Wheel</strong></p>
+<p><a href="https://pickerwheel.com/"
+class="uri">https://pickerwheel.com/</a> <br> <br></p>
+<p><strong>Sejda</strong></p>
+<p><a href="https://www.sejda.com/pdf-forms"
+class="uri">https://www.sejda.com/pdf-forms</a> Upload PDF file➡️️️Text
+Field | Textarea | Checkbox | Dropdown➡️️️Border color | Field properties
+| Duplicate field | Delete <br> <br></p>
+<p><strong>Word Cloud</strong></p>
+<p><a href="https://www.freewordcloudgenerator.com/generatewordcloud"
+class="uri">https://www.freewordcloudgenerator.com/generatewordcloud</a>
+<br> <br></p>
+<p><strong>BDP</strong></p>
+<p><a
+href="https://me.bdp.cn/index.html#/dash_edit/proj_4c3ff18402f99a8742c820f1c3593caf/dsh_f2012ee407047b96377607af4ebde429"
+class="uri">https://me.bdp.cn/index.html#/dash_edit/proj_4c3ff18402f99a8742c820f1c3593caf/dsh_f2012ee407047b96377607af4ebde429</a>
+<br> <br></p>
+<p><strong>ECHARTS</strong></p>
+<p><a href="https://echarts.apache.org/examples/en/index.html"
+class="uri">https://echarts.apache.org/examples/en/index.html</a> <br>
+<br></p>
+<p><strong>kepler.gl</strong></p>
+<p><a href="https://kepler.gl/demo"
+class="uri">https://kepler.gl/demo</a> <br> <br></p>
+<p><strong>神策数据</strong></p>
+<p><a href="https://www.sensorsdata.cn/demo/demo.html"
+class="uri">https://www.sensorsdata.cn/demo/demo.html</a> <br> <br></p>
+<p><strong>镝数图表</strong></p>
+<p><a href="https://dycharts.com/appv2/#/pages/home/index"
+class="uri">https://dycharts.com/appv2/#/pages/home/index</a></p>
+</details>
+<details>
+<summary>
+<strong><em>Cornell GIS Program</em></strong>
+</summary>
+<p><strong>ArcGIS</strong></p>
+<p>File➡️️️Save | Save As… | Save A Copy…</p>
+<p>File➡️️️Add Data➡️️️Add Data | Add Basemap… | Add XY Data… File➡️️️Add
+Data➡️️️Geocoding➡️️️Geocode Addresses…</p>
+<p>Insert➡️️️Data Frame | Title | Text | Neatline… | Legend… | North
+Arrow… | Scale Bar…</p>
+<p>Selection➡️️️Select By Attributes… | Select By Location
+Selection➡️️️Interactive Selection Method➡️️️Create New Selection | Add to
+Current Selection | Remove From Current Selection | Select From Current
+Selection</p>
+<p>Geoprocessing➡️️️Buffer | Clip | Intersect | Union | Merge | Dissolve
+Geoprocessing➡️️️ArcToolbox➡️️️Data Management Tools➡️️️Features➡️️️XY To Line
+Geoprocessing➡️️️ModelBuilder</p>
+<p>Customize➡️️️Toolbars</p>
+<p>Windows➡️️️Table Of Contents</p>
+<p>Layers➡️️️Double Click on Layer➡️️️Symbology➡️️️Categories | Quantities |
+Charts | Multiple Attributes Layers➡️️️Double Click on
+Layer➡️️️Labels➡️️️Label features in this layer</p>
+<p>Double Click ➡️️️Data Frame Properties Right Click</p>
+<p>Layers➡️️️Right Click on Layer➡️️️Open Attribute Table➡️️️Drop Down➡️️️Add
+Field…➡️️️Double | Text Layers➡️️️Right Click on Layer➡️️️Joins and
+Relates➡️️️Join… | Remove Join(s) | Relate… | Remove Relate(s)
+Layers➡️️️Right Click on Layer➡️️️Label Features Layers➡️️️Right Click on
+Layer➡️️️Data➡️️️Repair Data Source… | Export Data <br> <br></p>
+<p><strong>ArcGIS Online</strong></p>
+<p>Map➡️️️Open in Map Viewer➡️️️Layers | Tables➡️️️Add layer | Add table
+Map➡️️️Open in Map Viewer➡️️️My Layers Metadata | My Attachments | My
+Notes➡️️️Rename | Save | Save As | Remove</p>
+<p>Map➡️️️Open in Map Viewer Classic➡️️️Details➡️️️Contents➡️️️Layer➡️️️Tick |
+Untick Map➡️️️Open in Map Viewer Classic➡️️️Details➡️️️Contents➡️️️Layer➡️️️Change
+Style➡️️️Choose an attribute to show➡️️️Drop Down Map➡️️️Open in Map Viewer
+Classic➡️️️Details➡️️️Contents➡️️️Layer➡️️️Change Style➡️️️Select a drawing
+style➡️️️SELECT Map➡️️️Open in Map Viewer
+Classic➡️️️Details➡️️️Contents➡️️️Layer➡️️️Change Style➡️️️Select a drawing
+style➡️️️OPTIONS➡️️️Change all symbols. Map➡️️️Open in Map Viewer
+Classic➡️️️Details➡️️️Contents➡️️️Layer➡️️️Change Style➡️️️Select a drawing
+style➡️️️OPTIONS➡️️️Divided By:➡️️️Drop Down Map➡️️️Open in Map Viewer
+Classic➡️️️Details➡️️️Contents➡️️️Layer➡️️️Change Style➡️️️Select a drawing
+style➡️️️OPTIONS➡️️️Tick Classify Data | Untick Classify Data Map➡️️️Open in
+Map Viewer Classic➡️️️Details➡️️️Contents➡️️️Layer➡️️️Change Style➡️️️Select a
+drawing style➡️️️OPTIONS➡️️️Transparency | Visible Range Map➡️️️Open in Map
+Viewer Classic➡️️️Details➡️️️Contents➡️️️Change Style➡️️️Filter➡️️️APPLY FILTER
+Map➡️️️Open in Map Viewer Classic➡️️️Details➡️️️Contents➡️️️Layer➡️️️…</p>
+<p>Map➡️️️Open in Map Viewer Classic➡️️️Add➡️️️Search for Layers Map➡️️️Open in
+Map Viewer Classic➡️️️Add➡️️️Browse Living Atlas Layers➡️️️Search for
+layers➡️️️+Add | -Remove Map➡️️️Open in Map Viewer Classic➡️️️Add➡️️️Add Layer
+from File➡️️️Choose File➡️️️IMPORT LAYER Map➡️️️Open in Map Viewer
+Classic➡️️️Add➡️️️Add Map Notes➡️️️Create</p>
+<p>Map➡️️️Open in Map Viewer Classic➡️️️Analysis➡️️️Data Enrichment➡️️️Enrich
+Layer➡️️️SELECT VARIABLES</p>
+<p>Map➡️️️Open in Map Viewer Classic➡️️️Analysis➡️️️Use Proximity➡️️️Create
+Buffers Map➡️️️Open in Map Viewer Classic➡️️️Analysis➡️️️Use Proximity➡️️️Create
+Drive-Time Areas➡️️️Measure➡️️️Drop Down➡️️️(Driving Time | Driving Distance)
+| (Trucking Time | Trucking Distance) | (Walking Time | Walking
+Distance) | (Rural Driving Time | (Rural Driving Distance)</p>
+<p>Map➡️️️Open in Map Viewer Classic➡️️️Save➡️️️Drop Down➡️️️Save | Save As</p>
+<p>Map➡️️️Open in Map Viewer Classic➡️️️Share➡️️️EMBED IN WEBSITE Map➡️️️Open in
+Map Viewer Classic➡️️️Share➡️️️CREATE A WEB APP➡️️️Configurable Apps➡️️️Showcase
+a Map</p>
+<p>Map➡️️️Open in Map Viewer Classic➡️️️Find address or place</p>
+<p>Content➡️️️My Content➡️️️Title➡️️️Tick➡️️️Clear Selection | Move | Share |
+Delete</p>
+<p>Icon➡️️️My settings➡️️️General | licenses | Credits <br> <br></p>
+<p><strong>ArcGIS Pro</strong></p>
+<p><a
+href="https://learn.arcgis.com/en/paths/mapping-and-visualization-in-arcgis-pro/"
+class="uri">https://learn.arcgis.com/en/paths/mapping-and-visualization-in-arcgis-pro/</a>
+Mapping and visualization in ArcGIS Pro</p>
+<p><a href="https://learn.arcgis.com/en/paths/analysis-in-arcgis-pro/"
+class="uri">https://learn.arcgis.com/en/paths/analysis-in-arcgis-pro/</a>
+Analysis and modeling in ArcGIS Pro</p>
+<p><a
+href="https://learn.arcgis.com/en/paths/using-raster-data-and-imagery-in-arcgis-pro/"
+class="uri">https://learn.arcgis.com/en/paths/using-raster-data-and-imagery-in-arcgis-pro/</a>
+Using raster data and imagery in ArcGIS Pro</p>
+<p><a href="https://learn.arcgis.com/en/paths/3d-in-arcgis-pro/"
+class="uri">https://learn.arcgis.com/en/paths/3d-in-arcgis-pro/</a> 3D
+in ArcGIS Pro</p>
+<p><a
+href="https://learn.arcgis.com/en/paths/editing-and-data-management-in-arcgis-pro/"
+class="uri">https://learn.arcgis.com/en/paths/editing-and-data-management-in-arcgis-pro/</a>
+Data management and editing in ArcGIS Pro</p>
+<p>Customize Quick Access Toolbar➡️More Commands… | (Customize the
+Ribbon | Tick Minimize the Ribbon)</p>
+<p>Map➡️Basemap | Add Data | Add Graphics Layer
+Map➡️Locate➡️Search➡️Right Click➡️Add Graphic➡️Graphics➡️Clear
+Selection</p>
+<p>Layout➡️Activate➡️Layout➡️Close Activation</p>
+<p>Insert➡️New Map | New Layout Insert➡️Map Frame➡️Map Frame➡️Vertices |
+Rotate Or Flip | Merge Shapes | Reshape</p>
+<p>Analysis➡️Geoprocessing➡️ModelBuilder | Python | Environment
+Analysis➡️Geoprocessing➡️Ready To Use Tools➡️Drop Down➡️(Profile |
+Summarize Elevation | Viewshed) | (Trace Downstream | Watershed)
+Analysis➡️Geoprocessing➡️Tools Analysis➡️Tools➡️Default➡️Summarize
+Within | Optimized Hot Spot Analysis➡️More Tools… | Customize…
+Analysis➡️Tools➡️Summarize Data➡️Summary Statistics | Zonal Statistics
+as Table➡️More Tools… | Customize… Analysis➡️Workflows➡️Network Analysis
+| Neighborhood Explorer | Geostatistical Wizard | Business Analysis</p>
+<p>View➡️Catalog Pane➡️Right Click on Folders➡️Add Folder Connection
+View➡️Geoprocessing➡️buffer View➡️Geoprocessing➡️create network dataset
+View➡️Geoprocessing➡️project</p>
+<p>Edit➡️Create Edit➡️Modify➡️Edit Vertices➡️Double Click
+Edit➡️Select➡️Delete</p>
+<p>Contents➡️Click to repair data’s layer source. Contents➡️Right Click
+on Layer➡️Attribute Table➡️Select➡️Drop Down➡️Rectangle | Polygon |
+Lasso | Circle | Line | Trace Contents➡️Right Click on Layer➡️Attribute
+Table➡️Select By Attributes➡️Switch Contents➡️Symbology➡️Vary symbology
+by attribute➡️Color➡️Set an expression ontents➡️Symbology➡️Vary
+symbology by attribute➡️Size➡️Set an expression Contents➡️Disable
+Pop-ups | Configure Pop-ups Contents➡️Right Click on Layer➡️Data➡️Export
+Features Contents➡️Right Click on Layer➡️Properties➡️Source➡️Spatial
+Reference</p>
+<p>Share➡️Export Map Share➡️Export Layout</p>
+<p>Layout➡️Right Click➡️Tick Rulers | Guides <br> <br></p>
+<p><strong>QGIS</strong></p>
+<p>Project➡️️️New Print Layout…➡️️️Group | Ungroup | Bring to Front | Send
+to Back | Align Items | Distribute Items Project➡️️️New Print Layout…➡️️️Add
+item➡️️️Item Properties➡️️️Frame | Background Project➡️️️Layout Manager…</p>
+<p>Edit➡️️️Feature➡️️️Select Feature &gt;➡️️️Select Feature(s)</p>
+<p>View➡️️️New Map View View➡️️️Panels➡️️️Tick Browsers | Tick Layers
+View➡️️️Toolbars➡️️️Selection Toolbar</p>
+<p>Layer➡️️️Add Layer➡️️️Add Vector Layer… | Add Raster Layer… | Add Mesh
+Layer… | Add Delimited Text Layer…➡️️️Source➡️️️…➡️️️.zip</p>
+<p>Settings➡️️️Options…➡️️️Map Tools➡️️️Measure Tool➡️️️Preferred distance units
+| Preferred area units | Preferred angle units</p>
+<p>Plugins➡️Manage and Install Plugins…➡️All➡️Search for area weighted
+average➡️Install Plugin➡️Plugins➡️Area Weighted Average➡️Area Weighted
+Average Plugins➡️Manage and Install Plugins…➡️All➡️Search for density
+analysis➡️Install Plugin➡️Plugins➡️Density analysis➡️Styled Heatmap
+(Kernel Density Estimation)➡️Cell/pixel dimension in measurement units |
+Kernel radius in measurement units➡️Interpolation | Mode | Number of
+gradient colors Plugins➡️Manage and Install Plugins…➡️All➡️Search for
+mmqgis➡️Install Plugin➡️MMQGIS➡️Combine➡️Merge Layers Plugins➡️Manage
+and Install Plugins…➡️All➡️Search for mmqgis➡️Install
+Plugin➡️MMQGIS➡️Geocode➡️Geocode CSV with Web Services Plugins➡️Manage
+and Install Plugins…➡️All➡️Search for ORS Tools➡️Install
+Plugin➡️Web➡️ORS Tools➡️ORS Tools➡️Advanced Directions | Batch
+Jobs➡️Double Click on Layer➡️Symbology➡️Drop Down➡️Merged Features
+Plugins➡️Manage and Install Plugins…➡️All➡️Search for OSMInfo➡️Install
+Plugin➡️Web➡️OSMInfo➡️Get OSMInfo for a point➡️Click on Map➡️Right
+Click➡️Nearby features | Is inside➡️Save as temporary layer
+Plugins➡️Manage and Install Plugins…➡️All➡️Search for
+quickmapservices➡️Install Plugin➡️Web➡️QuickMapServices Plugins➡️Manage
+and Install Plugins…➡️All➡️Search for quickosm➡️Install
+Plugin➡️Vector➡️QuickOSM➡️QuickOSM…➡️Quick query➡️Preset➡️Drop Down➡️Run
+query Plugins➡️Manage and Install Plugins…➡️All➡️Search for
+quickosm➡️Install Plugin➡️Vector➡️QuickOSM➡️QuickOSM…➡️Quick query➡️Key
+| Value➡️Drop Down➡️Run query Plugins➡️Manage and Install
+Plugins…➡️All➡️Search for shape tools➡️Install
+Plugin➡️Processing➡️Toolbox➡️Search for shape tools➡️Vector geometry➡️XY
+to line➡️Input CRS for coordinates within the vector fields➡️Drop
+Down➡️Default CRS: EPSG:4326 – WGS 84➡️Output layer CRS➡️Default CRS:
+EPSG:4326 – WGS 84➡️Line type➡️Geodesic➡️Untick Use the point geometry
+for the line starting point [optional] &amp; Untick Use the point
+geometry for the line ending point [optional] &amp; Tick Show starting
+point [optional] &amp; Tick Show ending point [optional] &amp; Tick
+Output line layer’s Open output file after running algorithm &amp; Tick
+Output point layer’s Open output file after running algorithm
+Plugins➡️Manage and Install Plugins…➡️Install from ZIP➡️…➡️Install
+Plugin</p>
+<p>Vector➡️️️Geoprocessing Tools➡️️️Buffer… | Clip… | Difference… |
+Dissolve… | Intersection… | Union…➡️️️Parameters➡️️️Input layer | Overlay
+layer➡️️️Advanced options➡️️️invalid feature filtering➡️️️Use Default | Do Not
+Filter (Better Performance) | Skip (Ignore) Features with Invalid
+Geometries | Stop Algorithm Execution When a Geometry is Invalid</p>
+<p>Vector➡️️️Geometry Tools➡️️️Centroids… Vector➡️️️Geometry Tools➡️️️Extract
+Vertices… Vector➡️️️Geometry Tools➡️️️Multipart to Singleparts…
+Vector➡️️️Geometry Tools➡️️️Polygons to Lines… Vector➡️️️Geometry Tools➡️️️Add
+Geometry Attributes… Vector➡️️️Geometry Tools➡️️️Simplify… Vector➡️️️Geometry
+Tools➡️️️Lines to Polygons… Vector➡️️️Data Management Tools➡️️️Network
+analysis➡️️️Service area (from point) Vector➡️️️Data Management Tools➡️️️Merge
+Vector Layers… Vector➡️️️Data Management Tools➡️️️Reproject Layer…</p>
+<p>Raster➡️️️Align Rasters… Raster➡️️️Projections➡️️️Assign Projection…</p>
+<p>Processing➡️️️Toolbox➡️️️Vector analysis➡️️️DBSCAN clustering
+Processing➡️️️Toolbox➡️️️Vector analysis➡️️️Distance matrix
+Processing➡️️️Toolbox➡️️️Vector analysis➡️️️Distance to nearest hub (line to
+hub) Processing➡️️️Toolbox➡️️️Vector analysis➡️️️Distance to nearest hub
+(points) Processing➡️️️Toolbox➡️️️Vector analysis➡️️️K-means clustering
+Processing➡️️️Toolbox➡️️️Vector analysis➡️️️Mean coordinate(s)
+Processing➡️️️Toolbox➡️️️Vector analysis➡️️️Nearest neighbour analysis
+Processing➡️️️Toolbox➡️️️Vector analysis➡️️️Shortest line between features
+Processing➡️️️Toolbox➡️️️Vector creation➡️️️Generate points (pixel centroids)
+along line Processing➡️️️Toolbox➡️️️Vector geometry➡️️️Add geometry attributes
+Processing➡️️️Toolbox➡️️️Vector geometry➡️️️Interpolate point on line
+Processing➡️️️Toolbox➡️️️Vector geometry➡️️️Points along geometry
+Processing➡️️️Toolbox➡️️️Vector geometry➡️️️Add geometry attributes
+Processing➡️️️Toolbox➡️️️Vector geometry➡️️️Interpolate point on line
+Processing➡️️️Toolbox➡️️️Vector geometry➡️️️Points along geometry
+Processing➡️️️Toolbox➡️️️Vector overlay➡️️️Clip Processing➡️️️Toolbox➡️️️Vector
+overlay➡️️️Difference Processing➡️️️Toolbox➡️️️Vector overlay➡️️️Difference
+(multiple) Processing➡️️️Toolbox➡️️️Vector overlay➡️️️Extract/clip by extent
+Processing➡️️️Toolbox➡️️️Vector overlay➡️️️Intersection
+Processing➡️️️Toolbox➡️️️Vector overlay➡️️️Intersection (multiple)
+Processing➡️️️Toolbox➡️️️Vector overlay➡️️️Union Processing➡️️️Toolbox➡️️️Vector
+overlay➡️️️Union (multiple) Processing➡️️️Toolbox➡️️️Vector selection➡️️️Select
+by attribute Processing➡️️️Toolbox➡️️️Vector selection➡️️️Select by expression
+Processing➡️️️Toolbox➡️️️Vector selection➡️️️Select by location
+Processing➡️️️Toolbox➡️️️Vector selection➡️️️Select within distance
+Processing➡️️️Toolbox➡️️️Vector table➡️️️Field calculator
+Processing➡️️️Toolbox➡️️️Vector table➡️️️Refactor fields
+Processing➡️️️Toolbox➡️️️Vector table➡️️️Rename field Processing➡️Graphic
+Modeler… Processing➡️History…</p>
+<p>New Shapefile Layer…➡️️️Geometry type➡️️️Drop Down➡️️️Point | MultiPoint |
+LineString | Polygon</p>
+<p>Zoom Full | Zoom to Layer</p>
+<p>New GeoPackage Layer…➡️️️Geometry type New Shapefile Layer…➡️️️Geometry
+type New Temporary Scratch Layer➡️️️Geometry type</p>
+<p>Toggle Editing➡️️️Add Point Feature➡️️️Right Click➡️️️Save Layer Edits
+Toggle Editing➡️️️Add Line Feature➡️️️Right Click➡️️️Save Layer Edits Toggle
+Editing➡️️️Add Polygon Feature➡️️️Right Click➡️️️Save Layer Edits Toggle
+Editing➡️️️Vertex Tool➡️️️Click on Point➡️️️Delete➡️️️Save Layer Edits</p>
+<p>Move a Label, Diagram or Callout➡️️️Click on Label</p>
+<p>Browser➡️️️XYZ Files➡️️️OpenStreetMap➡️️️Right Click➡️️️Add Layer to Project
+= Drag and Drop</p>
+<p>Layers➡️️️Add Group</p>
+<p>Layers➡️️️Manage Map Themes➡️️️Show All Layers | Hide All Layers | Show
+Selected Layers | Hide Selected Layers</p>
+<p>Layers➡️️️Expand All | Collapse All</p>
+<p>Layers➡️️️Double Click on Layer➡️️️Source➡️️️Layer name Layers➡️️️Double
+Click on Layer➡️️️Symbology➡️️️Drop Down➡️️️Graduated➡️️️Symbol➡️️️Simple
+Line➡️️️Symbol layer type➡️️️Drop Down➡️️️Arrow➡️️️Untick Curved arrows &amp;
+Untick Repeat arrow on each segment Layers➡️️️Double Click on
+Layer➡️️️Symbology➡️️️Drop Down➡️️️Graduated➡️️️Method➡️️️Drop Down➡️️️Color |
+Size➡️️️Mode➡️️️Classify Layers➡️Double Click on Layer➡️Symbology➡️Drop
+Down➡️Single Symbol➡️Style➡️Browse Online Styles➡️Style Type➡️Marker
+Layers➡️️️Double Click on Layer➡️️️Labels➡️️️Callouts➡️️️Tick Draw callouts
+Layers➡️️️Double Click on Layer➡️️️Labels➡️️️Rendering➡️️️Show all labels for
+this layer (including colliding labels) Layers➡️️️Double Click on
+Layer➡️️️Fields➡️️️Add Field | Delete Field➡️️️Update All Layers➡️️️Double Click
+on Layer➡️️️Fields➡️️️Double Click on Name Layers➡️️️Double Click on
+Layer➡️️️Joins➡️️️➕｜➖➡️️️Join layer｜(Join field | Target field)➡️️️Tick
+Joined fields</p>
+<p>Layers➡️️️Right Click on Layer➡️️️Open Attribute Table➡️️️Toggle Editing
+Mode➡️️️Save edits Layers➡️️️Right Click on Layer➡️️️Open Attribute
+Table➡️️️Toggle Editing Mode➡️️️Add feature | Delete selected features using
+an expression➡️️️Expression➡️️️Fields and values➡️️️Drop Down➡️️️Double Click on
+Fields and values➡️️️All Unique➡️️️Double Click on All Unique➡️️️ “DESCR” IN
+(‘Beaches.’, ‘Cemeteries.’) “DESCR” = ‘Beaches.’ OR “DESCR” =
+‘Cemeteries.’ “DESCR” like ‘s%’ OR “DESCR” like ‘%s’ Layers➡️️️Right Click
+on Layer➡️️️Open Attribute Table➡️️️Toggle Editing Mode➡️️️Add feature |
+Delete selected features Layers➡️️️Right Click on Layer➡️️️Open Attribute
+Table➡️️️Toggle Editing Mode➡️️️Select all | Invert selection Layers➡️️️Right
+Click on Layer➡️️️Open Attribute Table➡️️️Toggle Editing Mode➡️️️New field |
+Delete field Layers➡️️️Right Click on Layer➡️️️Open Attribute Table➡️️️Toggle
+Editing Mode➡️️️Organize Columns Layers➡️️️Right Click on Layer➡️️️Open
+Attribute Table➡️️️Toggle Editing Mode➡️️️Open field calculator➡️️️Only update
+n selected features➡️️️Create a new field | Update existing
+field➡️️️Expression➡️️️ case when “MapYear” &lt; 1945 then 3 when “MapYear”
+&gt;= 1945 and “MapYear” &lt; 1980 then 2 when “MapYear” &gt;= 1980 then
+1 end Layers➡️️️Right Click on Layer➡️️️Open Attribute Table➡️️️Toggle Editing
+Mode➡️️️Open field calculator➡️️️Tick Create a new
+field➡️️️Geometry➡️️️$area</p>
+<p>Layers➡️️️Right Click on Layer➡️️️Export➡️️️Save Features As…➡️️️Format➡️️️Drop
+Down➡️️️Keyhole Markup Language (KML)</p>
+<p>Coordinate➡️️️Type World</p>
+<p>Current CRS: EPSG:➡️️️CRS➡️️️Predefined Coordinate Reference Systems</p>
+<p>Drop Down➡️️️Fit Layout Width | Fit Layout</p>
+<p>Add Item➡️️️Add Dynamic Text➡️️️Layout Name | Project Title Add Item➡️️️Add
+Legend➡️️️Legend Items➡️️️Untick Auto update Add Item➡️️️Add Map Add Item➡️️️Add
+North Arrow➡️️️Raster image➡️️️Size and
+Placement➡️️️Placement➡️️️Middle➡️️️Position and Size➡️️️X = 260 &amp; Y = 30
+&amp; Width = 30 &amp; Height = 40 Add Item➡️️️Add Scale
+Bar➡️️️Segments➡️️️left 0 &amp; right 4 Add Item➡️️️Add Shape➡️️️Add Rectangle |
+Add Ellipse | Add Triangle➡️️️Symbol Settings➡️️️Simple Fill➡️️️Symbol layer
+type➡️️️Drop Down➡️️️Outline: Simple line</p>
+<p>Layers➡️️️Right Click on Layer➡️️️Item Properties➡️️️Untick Auto update</p>
+<p>Layout➡️️️New Layout… | Duplicate Layout… | Delete Layout…
+Layout➡️️️Layout Manager…➡️️️Show | Duplicate… | Remove… | Rename…
+Layout➡️️️Export as Image… | Export as SVG | Export as PDF… <br> <br></p>
+<p><strong>GeoDa</strong></p>
+<p><a href="https://geodacenter.github.io/documentation.html"
+class="uri">https://geodacenter.github.io/documentation.html</a> GeoDa
+Documentation</p>
+<p>Open➡️️️Input file➡️️️File➡️️️Input file | Drop files here Open➡️️️Input
+file➡️️️File➡️️️Database➡️️️Database Type➡️️️Drop Down➡️️️PostgreSQL/PostGIS
+Database | Oracle Spatial Database | MySQL Spatial Database➡️️️Connect
+Open➡️️️Input file➡️️️File➡️️️Web➡️️️Drop Down➡️️️GeoJson URL | WFS URL➡️️️Connect
+Open➡️️️Recent | Sample Data Open➡️️️Close</p>
+<p>Table➡️️️Right Click on Column➡️️️Aggregate➡️️️Method➡️️️Count | Average |
+Max | Min | Sum➡️️️Parameters➡️️️Select key | Select fields➡️️️Aggregate
+Table➡️️️Right Click on Column➡️️️Merge➡️️️Select
+datasource➡️️️Method➡️️️Merge➡️️️Parameters➡️️️Merge by key values➡️️️current
+table key | import table key➡️️️Exclude | Include Table➡️️️Right Click on
+Column➡️️️Calculator➡️️️Special | Univariate | Bivariate | Spatial Lag |
+Rates | Date/Time Table➡️️️Right Click on Column➡️️️Add Variable➡️️️Name |
+Type | Insert before | Displayed decimal places Table➡️️️Right Click on
+Column➡️️️Delete Variable(s)➡️️️Delete Table➡️️️Right Click on Column➡️️️Edit
+Variable Properties➡️️️type➡️️️Double Click on Entry➡️️️Drop Down➡️️️real |
+integer | string | date | time | datetime</p>
+<p>Tools➡️️️Weights Manager➡️️️Create➡️️️Select ID Variable | Add ID
+Variable…➡️️️Contiguity Weight➡️️️Queen contiguity | Rook contiguity➡️️️Order
+of contiguity➡️️️Create➡️️️Histogram | Connectivity Map | Connectivity Graph
+Tools➡️️️Weights Manager➡️️️Create➡️️️Select ID Variable | Add ID
+Variable…➡️️️Distance Weight➡️️️Geometric centroids➡️️️Distance metric:➡️️️Drop
+Down➡️️️Euclidean Distance | Arc Distance (mi) | Arc Distance
+(km)➡️️️Variables➡️️️Transformation:➡️️️Drop Down➡️️️Raw | Demean | Standardize
+(Z) | Standardize (MAD)➡️️️Distance metric:➡️️️Drop Down➡️️️Manhattan Distance
+| Euclidean Distance➡️️️Distance band➡️️️Tick Use inverse distance? | Untick
+Use inverse distance? ➡️️️Power➡️️️Create➡️️️Histogram | Connectivity Map |
+Connectivity Graph Tools➡️️️Weights Manager➡️️️Create➡️️️Select ID Variable |
+Add ID Variable…➡️️️Distance Weight➡️️️Geometric centroids➡️️️Distance
+metric:➡️️️Drop Down➡️️️Euclidean Distance | Arc Distance (mi) | Arc
+Distance (km)➡️️️Variables➡️️️Transformation:➡️️️Drop Down➡️️️Raw | Demean |
+Standardize (Z) | Standardize (MAD)➡️️️Distance metric:➡️️️Drop
+Down➡️️️Manhattan Distance | Euclidean Distance➡️️️K-Nearest
+neighbors➡️️️Number of neighbors➡️️️Tick Use inverse distance? | Untick Use
+inverse distance?➡️️️Power ➡️️️Create➡️️️Histogram | Connectivity Map |
+Connectivity Graph Tools➡️️️Weights Manager➡️️️Create➡️️️Select ID Variable |
+Add ID Variable…➡️️️Distance Weight➡️️️Geometric centroids➡️️️Distance
+metric:➡️️️Drop Down➡️️️Euclidean Distance | Arc Distance (mi) | Arc
+Distance (km)➡️️️Variables➡️️️Transformation:➡️️️Drop Down➡️️️Raw | Demean |
+Standardize (Z) | Standardize (MAD)➡️️️Distance metric:➡️️️Drop
+Down➡️️️Manhattan Distance | Euclidean Distance➡️️️Kernel➡️️️Kernel
+function➡️️️Drop Down➡️️️Triangular➡️️️Diagonal weights = 1➡️️️Adaptive
+bandwidth➡️️️Number of neighbors➡️️️Create➡️️️Histogram | Connectivity Map |
+Connectivity Graph</p>
+<p>Tools➡️️️Shape➡️️️Points from Table➡️️️First Variable (X/Longitude) |
+Second Variable (Y/Latitude) Tools➡️️️Shape➡️️️Creat Grid➡️️️Grid Size➡️️️Select
+Use the bounding box of existing layers➡️️️Number of Rows | Number of
+Column➡️️️File Path Tools➡️️️Shape➡️️️Spatial Join Tools➡️️️Shape➡️️️Dissolve</p>
+<p>Map➡️️️Themeless Map Map➡️️️Quantile Map➡️️️Select Number Map➡️️️Percentile
+Map | Box Map (Hinge=1.5) | Box Map (Hinge=3.0) | Standard Deviation Map
+| Unique Values Map | Co-location Map Map➡️️️Natural Breaks Map➡️️️Select
+Number Map➡️️️Equal Intervals Map➡️️️Select Number Map➡️️️Custom
+Breaks➡️️️Select Number Map➡️️️Rates-Calculated Map➡️️️Raw Rate | Excess Risk
+| Empirical Bayes | Spatial Rate | Spatial Empirical Bayes
+Map➡️️️Conditional Map➡️️️Horizontal Cells | Vertical Cells | Map Theme
+Map➡️️️Cartogram➡️️️Circle Size | Circle Color Map➡️️️Map
+Movie➡️️️Variable➡️️️Loop | Reverse➡️️️Speed Map➡️️️Map Movie➡️️️Variable➡️️️Untick
+Cumulative➡️️️Ascending order | Descending order</p>
+<p>Explore➡️️️Histogram➡️️️Right Click on Graph➡️️️Choose Intervals➡️️️Intervals
+Explore➡️️️Histogram➡️️️Right Click on Graph➡️️️Histogram
+Classification➡️️️Create New Custom Explore➡️️️Histogram➡️️️Right Click on
+Graph➡️️️View➡️️️Set as Unique Value | Set Display Precision | Set Display
+Precision on Axes | Display Statistics Explore➡️️️Histogram➡️️️Right Click
+on Graph➡️️️View➡️️️Color➡️️️Background Color Explore➡️️️Histogram➡️️️Right Click
+on Graph➡️️️View➡️️️Color➡️️️Save Selection | Copy Image To Clipboard | Save
+Image As Explore➡️️️Box Plot➡️️️First Variable (X) Explore➡️️️Scatter
+Plot➡️️️Independent Var X | Dependent Var Y➡️️️Right Click on
+Graph➡️️️Data➡️️️View Standardized Data Explore➡️️️Scatter Plot➡️️️Independent
+Var X | Dependent Var Y➡️️️Right Click on Graph➡️️️Smoother➡️️️Show Linear
+Smoother | Show LOWESS Smoother Explore➡️️️Scatter Plot Matrix➡️️️Variables
+| Include Explore➡️️️Bubble Chart➡️️️X-Axis | Y-Axis | Bubble Size | Bubble
+Color➡️️️Classification Themes Explore➡️️️3D Scatter Plot Variables➡️️️X | Y |
+Z Explore➡️️️Parallel Coordinate Plot➡️️️Exclude | Include Explore➡️️️Averages
+Chart➡️️️Run Diff-in-Diff Test | Save Dummy Explore➡️️️Conditional Plot➡️️️Map
+| Histogram | Scatter Plot | Box Plot</p>
+<p>Clusters➡️️️(PCA | MDS | t-SNE) | (K Means | Medians | K Medoids |
+Spectral | Hierarchical) | (DBScan | HDBScan) | (SC K Means | SCHC |
+skater | redcap) | (AZP | max-p)</p>
+<p>Space➡️️️Univariate Moran’s I➡️️️Right Click➡️️️Randomization➡️️️99
+Permutations | 199 Permutations | 499 Permutations | 999
+Permutations</p>
+<p>Regression➡️️️Regression➡️️️Dependent Variable | Covariates➡️️️Tick Weights
+File | Untick Weights File➡️️️Models➡️️️Spatial Lag | Spatial Error</p>
+<p>Add Map Layer➡️️️Input file➡️️️File➡️️️Input file | Drop files here Map
+Layer Settings➡️️️Toggle On | Toggle Off➡️️️Right Click on Layer➡️️️Set
+Highlight Association | Clear Highlight Association</p>
+<p>Basemap➡️️️Carto | ESRI | HERE | OpenStreetMap | Stamen | Other
+(China)</p>
+<p>Right Click on Map➡️️️Connectivity➡️️️Show Selection and Neighbors | Show
+Graph Right Click on Map➡️️️Shape Centers➡️️️(Add Mean Centers to Table |
+Add Centroids to Table) | (Display Mean Centers | Display Centroids)
+Right Click on Map➡️️️Thiessen Polygons➡️️️Display Thiessen Polygons | Save
+Thiessen Polygons Right Click on Map➡️️️Minimum Spanning Tree➡️️️Display
+Minimum Spanning Tree | Save Minimum Spanning Tree Right Click on
+Map➡️️️Selection Shape➡️️️Rectangle | Circle | Line Right Click on
+Map➡️️️Color➡️️️Outlines Visible | Show Map Boundary | Background Color <br>
+<br></p>
+<p><strong>Mapbox</strong></p>
+<p>Components➡️️️Colors <br> <br></p>
+<p><strong>OpenStreetMap</strong></p>
+<p>Edit➡️️️Point | Line | Area➡️️️return➡️️️Select feature type➡️️️Search</p>
+<p>Right Click➡️️️Square | Split | Delete</p>
+<p>Search➡️️️Go➡️️️Export➡️️️QGIS➡️️️Layer➡️️️Data Source
+Manager➡️️️Vector➡️️️Source➡️️️Vector Dataset(s) <br> <br></p>
+<p><strong>OpenStreetMap Data Extracts</strong></p>
+<p>Sub Region➡️️️QGIS➡️️️Layer➡️️️Data Source Manager➡️️️Vector➡️️️Source➡️️️Vector
+Dataset(s) <br> <br></p>
+<p><strong>Overpass Turbo</strong></p>
+<p><a href="https://overpass-turbo.eu/"
+class="uri">https://overpass-turbo.eu/</a></p>
+<p>Wizard➡️️️search➡️️️build and run query <br> <br></p>
+<p><strong>Geoapify</strong></p>
+<p><a href="https://www.geoapify.com/tools/reverse-geocoding-online"
+class="uri">https://www.geoapify.com/tools/reverse-geocoding-online</a>
+<br> <br></p>
+<p><strong>LatLong.net</strong></p>
+<p><a href="https://www.latlong.net/geo-tools"
+class="uri">https://www.latlong.net/geo-tools</a> <br> <br></p>
+<p><strong>MyGeodata Converter</strong></p>
+<p><a href="https://mygeodata.cloud/converter/"
+class="uri">https://mygeodata.cloud/converter/</a></p>
+WMS/WMTS: Web Map Service/Web Map Tile Service WCS: Web Coverage Service
+WFS: Windows Installation Script OWS: Open Geospatial Consortium
+</details>
+<details>
+<summary>
+<strong><em>Cornell Google Program</em></strong>
+</summary>
+<p><strong>Google</strong></p>
+<p>Google apps➡️️️YouTube➡️️️SUBSCRIPTIONS Google Account➡️️️Manage your
+Google Account➡️️️Security➡️️️Password Manager➡️️️Go to Password
+Checkup➡️️️Check Passwords <br> <br></p>
+<p><strong>Google Collaboratory</strong></p>
+<p>View➡️️️Executed code history | Comments sidebar</p>
+<p>Insert➡️️️Code cell | Text cell | Section code cell</p>
+<p>Runtime➡️️️Run all</p>
+<p>Tools➡️️️Settings</p>
+<p>Files➡️️️Upload to session storage | Refresh | Mount Drive
+Files➡️️️sample data</p>
+<p>Toggle heading once</p>
+<p>Command + M = From Code To Text Command + M + Z = Undo Command + M +
+B = Insert Code Command + M + D = Delete Code <br> <br></p>
+<p><strong>Google Doc</strong></p>
+<p>File➡️Page setup➡️Pages | Pageless</p>
+<p>Insert➡️Horizontal line Insert➡️Smart chips➡️Placeholder chips
+Insert➡️Building blocks➡️Meeting notes | Email draft Insert➡️Special
+characters➡️Categories➡️Recent characters Insert➡️Watermark
+Insert➡️Break➡️Page break | Column break | Section break (next page) |
+Section break (continuous)</p>
+<p>Styles➡️Drop Down➡️Heading 1 | Heading 2 | Heading 3 <br> <br></p>
+<p><strong>Google Earth</strong></p>
+<p>Shift + Mouse with One Finger = Command + Mouse with One Finger =
+Horizontal / Vertical <br> <br></p>
+<p><strong>Google Email</strong></p>
+<p>Compose➡️️️Insert signature➡️️️Manage signatures➡️️️Signature:➡️️️+Create
+new➡️️️Signature defaults➡️️️FOR NEW EMAILS USE | ON REPLY/FORWARD USE➡️️️Drop
+Down <br> <br></p>
+<p><strong>Google Form</strong></p>
+<p>Short answer Paragraph Multiple choice</p>
+<p>Checkboxes (☑️✖️) Linear scale (1-5)</p>
+<p>Multiple choice grid Checkbox grid <br> <br></p>
+<p><strong>Google My Maps</strong></p>
+<p>File…➡️️️New map | Copy map | Open a map | Move to Trash File…➡️️️Embed
+on my site File…➡️️️Export to KML/KMZ➡️️️Tick Export as KML instead of KMZ.
+Does not support all icons➡️️️Download File…➡️️️Print map File…➡️️️View in
+Google Earth</p>
+<p>Add layer | Share | Preview</p>
+<p>Layer…➡️️️Rename this layer | Delete this layer</p>
+<p>Layer…➡️️️Open data table➡️️️Find in table Layer…➡️️️Open data table➡️️️name
+| description➡️️️Drop Down➡️️️Sort A ➡️️ Z | Sort A ➡️️ Z Layer…➡️️️Open data
+table➡️️️name | description➡️️️Drop Down➡️️️Insert column after | Insert
+column before | Duplicate Layer…➡️️️Open data table➡️️️name |
+description➡️️️Drop Down➡️️️Delete Column Layer…➡️️️Open data table➡️️️name |
+description➡️️️Drop Down➡️️️Set as title column Layer…➡️️️Open data
+table➡️️️name | description➡️️️Drop Down➡️️️Add Row</p>
+<p>Layer…➡️️️Import</p>
+<p>Layer…➡️️️Reimport and merge➡️️️Replace all items | Update matching items
+Layer…➡️️️Reimport and merge➡️️️Add more items Layer…➡️️️Reimport and
+merge➡️️️Merge matching items</p>
+<p>Layer…➡️️️Export data➡️️️KML/KMZ | CSV</p>
+<p>Layer…➡️️️Individual styles➡️️️Group places by | Set labels <br> <br></p>
+<p><strong>Google Sheet</strong></p>
+<p><a href="https://support.google.com/docs/table/25273?hl=en"
+class="uri">https://support.google.com/docs/table/25273?hl=en</a><br />
+Google Sheets function list</p>
+<p>View➡️️️Show➡️️️Tick or Untick (Formula Bar | Gridlines | Formulas |
+Protected range)</p>
+<p>Insert➡️️️Chart➡️️️Customize<br />
+Insert➡️️️Pivot table Insert➡️️️Checkbox</p>
+<p>Format➡️️️Wrapping➡️️️Overflow | Wrap | Clip</p>
+<p>Data➡️️️Sort range➡️️️Sort range by column A (A to Z) | Sort range by
+column A (Z to A) Data➡️️️Sort range➡️️️Advanced range sorting options➡️️️Tick
+Data has header row➡️️️Sort by Data➡️️️Data validation➡️️️Criteria:➡️️️Drop
+Down➡️️️List of items Data➡️️️Data validation➡️️️Criteria:➡️️️Drop
+Down➡️️️Checkbox➡️️️Tick Use custom cell values➡️️️Checked: | Unchecked:
+Data➡️️️Data cleanup➡️️️Remove duplicates Data➡️️️Split text to columns</p>
+<p>Command + Shift + H = Find and replace Command + / (+Toggle On Enable
+compatible spreadsheet shortcuts) = Open the keyboard shortcuts menu
+Command +  = Clear formatting fn+F4 = $</p>
+<p>GOOGLETRANSLATE() IMAGE() SPARKLINE() SPLIT() <br> <br></p>
+<p><strong>Google Slide</strong></p>
+<p>Slide➡️️️Apply layout | Edit theme | Change theme Explore <br> <br></p>
+<p><strong>Google YouTube</strong></p>
+K: Play | Pause M: Unmute | Mute C: Captions | Close Captions
+Settings➡️️️Subtitles/CC | Quality I: Miniplayer | Expand T: Theater mode
+| Default view F: Full Screen | Exit Full Screen
+</details>
+<details>
+<summary>
+<strong><em>Cornell Graphic Program</em></strong>
+</summary>
+<p><strong>AutoCAD</strong></p>
+<p>Window➡️️️Tool Bar | Status Bar</p>
+<p>A = arc B = block C = circle D = dimstyle E = erase F = fillet G =
+group H = hatch I = insert J = join L = line M = move N = new O =
+offset<br />
+P = pan Q = qdim R = redraw S = stretch T = mtext V = view W = wblock X
+= explode Z = zoom</p>
+<p>OP➡️️️Crosshair size UN➡️️️Length Type:➡️️️Decimal</p>
+<p>BR CO = CP EX LA LS MA MI CH = MO = PR RO Pl TR</p>
+<p>EXP(LODE) VPO(RTS)</p>
+<p>Window➡️️️Status Bar Layout➡️️️Right Click➡️️️Page Setup Manager…</p>
+<p>Northwest (Whole Selection) VS Southeast (Partial Selection)</p>
+<p>Right Click➡️️️Draw Order <br> <br></p>
+<p><strong>Canva</strong></p>
+<p>Elements➡️️️Search anything from Canva➡️️️Facebook | Instagram
+Elements➡️️️Charts | Tables Elements➡️️️Frames | Grids➡️️️Photos➡️️️Drag and
+drop …More➡️️️More from Canva➡️️️Photos | Styles | Audio | Videos |
+Background | Charts | Folders …More➡️️️Create something new➡️️️Bitmoji |
+Character Builder | Draw (Beta) | QR Code</p>
+<p>Text➡️️️Type Text➡️️️Click on Text➡️️️Effects➡️️️Shape➡️️️Curve➡️️️Curve
+Text➡️️️Type Text➡️️️Click on Text➡️️️Animate Text➡️️️Type Text➡️️️Click on
+Text➡️️️Copy style➡️️️Click on the other Text</p>
+<p>Page n➡️️️Add page title | Duplicate Page | Delete page | Add page</p>
+<p>Click on image➡️️️Flip➡️️️Flip horizontal | Flip vertical Click on
+image➡️️️Position➡️️️Align to page➡️️️Top | Left | Middle | Center | Bottom |
+Right Click on image➡️️️Transparency | Link <br> <br></p>
+<p><strong>Figma</strong></p>
+<p>Shape tools➡️️️Ellipse➡️️️Arc➡️️️Start | Sweep Shape
+tools➡️️️Ellipse➡️️️Arc➡️️️Ratio Shape tools➡️️️Polygon➡️️️Count Shape
+tools➡️️️Polygon➡️️️Radius Shape tools➡️️️Star➡️️️Count Shape
+tools➡️️️Star➡️️️Radius Shape tools➡️️️Star➡️️️Ratio</p>
+<p>Click on Object➡️️️Layer➡️️️Drop Down➡️️️Pass through | Overlay |
+Difference</p>
+<p>Click on Object➡️️️Fill➡️️️Drop Down➡️️️Solid | Linear | Radial | Angular |
+Diamond | Image</p>
+<p>Click on Object➡️️️Effects➡️️️Inner shadow | Drop shadow | Layer blur |
+Background blur</p>
+<p>Click on Blank➡️️️Export➡️️️Left Drop Down➡️️️512w | 512h➡️️️Preview Click on
+Blank➡️️️Export➡️️️Right Drop Down➡️️️PNG | JPG | SVG | PDF➡️️️Preview</p>
+<p>V = Move K = Scale</p>
+<p>F = Frame S = Slice</p>
+<p>R = Rectangle L = Line O = Ellipse P = Pen</p>
+<p>T = Text</p>
+<p>H = Hand</p>
+<p>C = Comment <br> <br></p>
+<p><strong>SketchUp</strong></p>
+<p>Single Click Double Click Triple Click</p>
+<p>a = arc b = bucket e = erase f = offset g = group h = hand k = shadow
+l = line m = move o = orbit p = push q = rotate r = rectangle s = scale
+t = tape</p>
+<p>Space = Select Push + Double Click = Same Size Select Object + Move +
+Select Endpoint + Option + nx | /n = Array</p>
+<p>Zoom Extents</p>
+<p>View➡️️️Scene Tabs | Shadows</p>
+<p>Camera➡️️️Standard Views➡️️️Top | Bottom | Front | Back | Left | Right |
+Iso Camera➡️️️Parallel Projection Camera➡️️️Perspective Camera➡️️️Position
+Camera | Walk | Look Around</p>
+<p>Draw➡️️️Sandbox➡️️️From Scratch Tools➡️️️Sandbox➡️️️Smoove 3D Warehouse➡️️️3D
+Warehouse Settings➡️️️Analytics</p>
+<p>File➡️️️Export➡️️️2D Graphic…</p>
+<p>Components➡️️️Select➡️️️In Model➡️️️Search Styles➡️️️Edit➡️️️Edges |
+Profiles</p>
+<p>Right Click➡️️️Reverse Faces</p>
+<p>Command + X = Delete Command + Y = Forward Command + Z = Back</p>
+<p>Materials Tags Shadows Scenes <br> <br></p>
+<p><strong>Visme</strong></p>
+<p>Basics➡️️️Header &amp; Text | Stats &amp; Figures | Graphics &amp; Text
+| Diagrams | Call to Action</p>
+<p>Graphics➡️️️Lines &amp; Shapes | Icons | 3d Graphics</p>
+<p>Data➡️️️Charts &amp; Graphs | Diagrams | Tables | Maps | Data
+Widgets</p>
+<p>Media➡️️️Videos | Add Audio</p>
+<p>Apps➡️️️VIDEOS | CLOUD | MARKETING | PRODUCTIVITY | OTHERS</p>
+<p>Select Text➡️️️Edit➡️️️More Select Icon➡️️️Flip | Replace icon Select
+Image➡️️️Filter | Crop | Frames | Flip | Replace Select
+Background➡️️️Background | Canvas Size</p>
+<p><a
+href="https://99designs.com/blog/tips/the-7-step-guide-to-understanding-color-theory/"
+class="uri">https://99designs.com/blog/tips/the-7-step-guide-to-understanding-color-theory/</a></p>
+<p>The fundamentals of understanding color theory <br> <br></p>
+<p><strong>VOSviewer</strong></p>
+<p><a href="https://www.vosviewer.com/"
+class="uri">https://www.vosviewer.com/</a></p>
+<p><a
+href="https://www-webofscience-com.proxy.library.cornell.edu/wos/woscc/basic-search"
+class="uri">https://www-webofscience-com.proxy.library.cornell.edu/wos/woscc/basic-search</a></p>
+<p>+Add row | + Add date range➡️️️Export➡️️️Drop Down➡️️️Plain text
+file➡️️️Record Content:➡️️️Drop Down➡️️️Full Record and Cited
+References➡️️️Export</p>
+<p>Create…➡️️️Create a map based on text data➡️️️Next &gt;➡️️️Read data from
+bibliographic database files➡️️️Next &gt;➡️️️…</p>
+<p>Network Visualization | Overlay Visualization | Density
+Visualization</p>
+Screenshot…➡️️️Drop Down➡️️️Save…
+</details>
+<details>
+<summary>
+<strong><em>Cornell JMP Program</em></strong>
+</summary>
+<p><strong>JMP</strong></p>
+<p><a
+href="https://www.jmp.com/support/help/en/17.0/index.shtml#page/jmp/learn-about-jmp.shtml#"
+class="uri">https://www.jmp.com/support/help/en/17.0/index.shtml#page/jmp/learn-about-jmp.shtml#</a>
+Help</p>
+<p>Click category:➡️️️File➡️️️Miscellaneous➡️️️Sample Data Click
+category:➡️️️Import➡️️️Import Wizards➡️️️Excel</p>
+<p>JMP➡️️️Preferences…</p>
+<p>File➡️️️New➡️️️New Data Table | New Script | New Journal | New Project |
+New Application File➡️️️New➡️️️New Dashboard➡️️️H List Box | V List Box
+File➡️️️Open… File➡️️️Open Recent➡️️️Clear Menu File➡️️️Export…</p>
+<p>Edit➡️️️Cut | Copy | Paste | Delete</p>
+<p>Tables➡️️️Missing Data Pattern➡️️️Treemap Tables➡️️️Stack ——Stack Columns
+——Stacked “Data” Column ——Source “Label” Column</p>
+<p>Tables➡️️️Split ——Split By (Label) ——Split Columns (Data) ——Group</p>
+<p>Rows➡️️️Row Selection➡️️️Select All Rows | Clear Row States Rows➡️️️Row
+Editor</p>
+<p>Cols➡️️️New Columns…➡️️️Number of columns to add Cols➡️️️Label/Unlabel
+Cols➡️️️Recode… Cols➡️️️Columns Viewer➡️️️Show Summary➡️️️Tick Show
+Quantiles</p>
+<p>DOE➡️️️Sample Size Explorers</p>
+<p>One Sample t-test and CI Analyze➡️️️Distribution➡️️️Drag Continuous
+Variable to Y, Columns Analyze➡️️️Distribution➡️️️Drop Down➡️️️Stack
+Analyze➡️️️Distribution➡️️️Drop Down➡️️️Test Mean➡️️️Specify Hypothesized
+Mean➡️️️Tick Wilcoxon Signed Rank➡️️️Drop Down➡️️️PValue animation
+Analyze➡️️️Distribution➡️️️Drop Down➡️️️Test Std Dev
+Analyze➡️️️Distribution➡️️️Drop Down➡️️️Confidence Interval ——Y, Columns
+——Weight ——Freq ——By</p>
+<p>Two Sample t-test and CIs Analyze➡️️️Fit Y by X➡️️️Drag Continuous
+Variable to Y, Response | Drag Nominal Variable to X, Factor
+Analyze➡️️️Fit Y by X➡️️️Drop Down➡️️️Means/Anova/Pooled t = assume equ var
+Analyze➡️️️Fit Y by X➡️️️Drop Down➡️️️Means and Std Dev Analyze➡️️️Fit Y by
+X➡️️️Drop Down➡️️️t Test = assume unequ var Analyze➡️️️Fit Y by X➡️️️Drop
+Down➡️️️Display Options➡️️️Tick Points Jittered ——X, Factor ——Block ——Weight
+——Freq ——By</p>
+<p>One-Way Anova Analyze➡️️️Fit Y by X➡️️️Drag Continuous Variable to Y,
+Response | Drag Nominal Variable to X, Factor Analyze➡️️️Fit Y by X➡️️️Drop
+Down➡️️️Means/Anova Analyze➡️️️Fit Y by X➡️️️Drop Down➡️️️Means and Std Dev
+Analyze➡️️️Fit Y by X➡️️️Drop Down➡️️️Compare Means➡️️️Each Pair, Student’s t |
+All Pairs, Tukey HSD | With Best, Hsu MCB | With Control,
+Dunnett’s➡️️️Connecting Letters Report Analyze➡️️️Fit Y by X➡️️️Drop
+Down➡️️️Nonparametric➡️️️Wilcoxon Test | Median Test | van der Waerden Test
+| Exact Test | Nonparametric Multiple Comparisons Analyze➡️️️Fit Y by
+X➡️️️Drop Down➡️️️Save➡️️️Save Residuals➡️️️Analyze➡️️️Distribution➡️️️Drag
+Residuals to Y, Columns➡️️️Distributions➡️️️Drop Down➡️️️Normal Quantile Plot
+——Y, Response ——X, Factor ——Block ——Weight ——Freq ——By</p>
+<p>Two-Way Anova Analyze➡️️️Fit Model➡️️️Drag Continuous Variables to Y |
+Drag Nominal Variables to Model➡️️️Macros➡️️️Drop Down➡️️️Full Factorial |
+Factorial to Degree | Factorial Sorted Analyze➡️️️Fit Model➡️️️Drop
+Down➡️️️Estimates➡️️️Save Prediction Expression | Indicator Parameterization
+Estimates Analyze➡️️️Fit Model➡️️️Drop Down➡️️️Factor Profiling➡️️️Profiler
+Analyze➡️️️Fit Model➡️️️Drop Down➡️️️Command + LSMeans Plot ——Y ——Weight
+——Freq ——By</p>
+<p>Three-Way Anova Analyze➡️️️Fit Model➡️️️Drag Continuous Variables to Y |
+Drag Nominal Variables to Model➡️️️Macros➡️️️Drop Down➡️️️Full Factorial |
+Factorial to Degree | Factorial Sorted ——Y ——Weight ——Freq ——By</p>
+<p>Multiple Repeated Measures Analyze➡️️️Fit Model➡️️️Drag Continuous
+Variables to Y | Drag (Continuous Variables | Nominal Variables) to
+Model➡️️️Attributes➡️️️Drop Down➡️️️Random Effect ——Y ——Weight ——Freq ——By</p>
+<p>Bubble Plot Graph➡️️️Bubble Plot➡️️️Drag Continuous Variable to Y | Drag
+Nominal Variable to X | Drag Spatial Variables to ID | Drag Temporal
+Variable to Time Graph➡️️️Bubble Plot➡️️️Drop Down➡️️️Trail Bubbles | Trail
+Lines | Label➡️️️All Graph➡️️️Bubble Plot➡️️️Drop Down➡️️️Local Data
+Filter➡️️️Spatial Variable➡️️️Add➡️️️Split➡️️️File➡️️️Export…➡️️️Interactive HTML
+with Data➡️️️Next…➡️️️Export ——Y ——X ——ID ——Time ——Freq ——Sizes ——Coloring
+——By</p>
+<p>Cell Plot Graph➡️️️Parallel Plot➡️️️Drag Nominal Variables to Y, Response
+——Y, Response ——X, Grouping ——Label ——By</p>
+<p>Mosaic Plot Analyze➡️️️Fit Y by X➡️️️Drag (Nominal Variable | Ordinal
+Variable) Variable to Y, Response | Drag (Nominal Variable | Ordinal
+Variable) Variable to X, Factor ——Y, Response ——X, Factor ——Block
+——Weight ——Freq ——By</p>
+<p>Parallel Plot Graph➡️️️Parallel Plot➡️️️Drag Nominal Variables to Y,
+Response ——Y, Response ——X, Grouping ——By</p>
+<p>Pareto Plot Analyze➡️️️Quality and Process➡️️️Pareto Plot➡️️️Drag Character
+Variable to Y, Cause | Drag Numeric Variable to Weight Analyze➡️️️Quality
+and Process➡️️️Pareto Plot➡️️️Drop Down➡️️️Label Cum Percent Points ——Y, Cause
+——X, Grouping ——Weight ——Freq ——By</p>
+<p>Cluster Analysis Analyze➡️️️Clustering➡️️️Hierarchical Cluster➡️️️Drag
+(Continuous Variables | Nominal Variables) to Y, Columns
+Analyze➡️️️Clustering➡️️️Hierarchical Cluster➡️️️Drop Down➡️️️Color Clusters |
+Number of Clusters Analyze➡️️️Clustering➡️️️Hierarchical Cluster➡️️️Drop
+Down➡️️️Constellation Plot➡️️️Save Clusters | Save Cluster
+Means➡️️️Graph➡️️️Graph Builder➡️️️Drag and Drop Cluster to Color: Cluster
+Analyze➡️️️Clustering➡️️️Hierarchical Cluster➡️️️Drop Down➡️️️Scatterplot Matrix
+| Parallel Coord Plots ——Y, Columns ——Ordering ——Label ——By</p>
+<p>Analyze➡️️️Clustering➡️️️Hierarchical Cluster➡️️️Drag Continuous Variables
+to Y, Columns Analyze➡️️️Clustering➡️️️K Means Cluster➡️️️Drop Down➡️️️Biplot
+——Y, Columns ——Weight ——Freq ——By</p>
+<p>Multiple Correspondence Analysis Analyze➡️️️Multivariate
+Methods➡️️️Multivariate Correspondence Analysis➡️️️Drag Nominal Variables to
+Y, Response Analyze➡️️️Multivariate Methods➡️️️Multivariate Correspondence
+Analysis➡️️️Tick Proportional marker size Analyze➡️️️Multivariate
+Methods➡️️️Multivariate Correspondence Analysis➡️️️Drop Down➡️️️Correspondence
+Analysis➡️️️Show Adjusted Inertia | Show Partial Contributions to Inertia
+——Y, Response ——X, Factor ——Z, Supplementary Variable ——Supplementary ID
+——Freq ——By</p>
+<p>Principal Component Analysis Analyze➡️️️Multivariate Methods➡️️️Principal
+Components➡️️️Drag Continuous Variables to Y, Columns
+Analyze➡️️️Multivariate Methods➡️️️Principal Components➡️️️Scree Plot➡️️️Save
+Columns➡️️️Save Principal Components Analyze➡️️️Multivariate
+Methods➡️️️Principal Components➡️️️Scree Plot➡️️️Save Columns➡️️️Publish
+Components Formulas➡️️️Drop Down➡️️️Generate SAS Code ——Y, Columns ——Z,
+Supplementary Variable ——Weight ——Freq ——By</p>
+<p>Process Capability Analysis Analyze➡️️️Distribution➡️️️Drag Continuous
+Variables to Y ——Y, Columns ——Weight ——Freq ——By</p>
+<p>Reliability/Survival Analysis Analyze➡️️️Reliability and Survival➡️️️Life
+Distribution➡️️️Drag Temporal Variable to Y, Time to Event | Drag Result
+Variable to Censor Analyze➡️️️Reliability and Survival➡️️️Life
+Distribution➡️️️Compare Distributions➡️️️Tick Nonparametric | Tick Lognormal
+| Tick Weibull ——Y, Time to Event ——Censor ——Failure Cause ——Freq
+——Label ——By</p>
+<p>Time Series Analysis Analyze➡️️️Specialized Modeling➡️️️Drag Continuous
+Variable to Y, Time Series | Drag Temporal Variable to X, Time ID
+Analyze➡️️️Specialized Modeling➡️️️Time Series➡️️️Drop Down➡️️️ARIMA | Seasonal
+ARIMA Analyze➡️️️Specialized Modeling➡️️️Time Series➡️️️Drop Down➡️️️Smoothing
+Model➡️️️Simple Moving Average | Simple Exponential Smoothing | Double
+Exponential Smoothing | Linear Exponential Smoothing | Damped-Trend
+Linear Exponential Smoothing | Seasonal Exponential Smoothing | Winters
+Method ——Y, Time Series ——Input List ——X, Time ID ——By</p>
+<p>Quality and Process Analyze➡️️️Quality and Process➡️️️Control Chart
+Builder➡️️️Drag Continuous Variables to Y | Drag Ordinal Variable to
+Phase➡️️️Points➡️️️Statistic➡️️️Individual | Moving Range Analyze➡️️️Quality and
+Process➡️️️Control Chart Builder➡️️️Drag Continuous Variables to Y | Drag
+Ordinal Variable to Phase➡️️️Limits➡️️️Sigma➡️️️Moving Range | Median Moving
+Range | Levey Jennings</p>
+<p>Analyze➡️️️Quality and Process➡️️️Capability➡️️️Drag Continuous Variables
+to Y ——Y, Columns ——Weight ——Freq ——By</p>
+<p>Analyze➡️️️Quality and Process➡️️️Control Chart➡️️️IMR Control Chart
+(Individuals/Moving Range Control charts to monitor the performance of a
+continuous variable over time) ——Y ——Subgroup ——Label ——Phase ——By</p>
+<p>Analyze➡️️️Quality and Process➡️️️Control Chart➡️️️XBar Control Chart (XBar
+R/ZBar S Control charts to monitor the performance of a continuous
+variable with subgrouping over time) ——Y ——Subgroup ——Phase ——By</p>
+<p>Analyze➡️️️Quality and Process➡️️️Control Chart➡️️️Run Chart ——Y ——By</p>
+<p>Analyze➡️️️Quality and Process➡️️️Control Chart➡️️️(P Chart | NP Chart) (to
+monitor the performance of a binary variable over time) | (C Chart | U
+Chart) (to monitor the performance of a count variable over time) ——Y, n
+Defects ——Subgroup ——n Trials ——Phase ——By</p>
+<p>Text Explorer Analyze➡️️️Text Explorer➡️️️Drag Textual Variables to Text
+Columns Analyze➡️️️Text Explorer➡️️️Drop Down➡️️️Display Options➡️️️Show Word
+Cloud➡️️️Drop Down➡️️️Layout➡️️️Centered➡️️️Right Click on Selected Words➡️️️Show
+Text | Add Stop Word Cloud➡️️️Coloring➡️️️Arbitrary Colors Analyze➡️️️Text
+Explorer➡️️️Drop Down➡️️️Term Options➡️️️Stemming➡️️️Stem for Combining
+Analyze➡️️️Text Explorer➡️️️Drop Down➡️️️Local Data Filter ——Text Columns ——ID
+——By</p>
+<p>Analyze➡️️️Fit Y by X➡️️️Drop Down➡️️️Fit Mean | Fit Line | Fit Polynomial
+(Bivariate) Analyze➡️️️Fit Y by X➡️️️Drop Down➡️️️Density Ellipse | Nonpar
+Density (Bivariate) Analyze➡️️️Fit Y by X➡️️️Drop Down➡️️️Relative Risk | Odds
+Ratio (Contingency) Analyze➡️️️Fit Y by X➡️️️Drop Down➡️️️ROC Curve | Lift
+Curve (Logistic)</p>
+<p>Analyze➡️️️Tabulate➡️️️Drop zone for columns | Drop zone for rows➡️️️Drop
+Down➡️️️Make Into Data Table</p>
+<p>Analyze➡️️️Fit Model➡️️️Drop Down➡️️️Odds Ratios | ROC Curve | Lift Curve |
+Confusion Matrix Analyze➡️️️Fit Model➡️️️Drop Down➡️️️Profiler</p>
+<p>Analyze➡️️️Predictive Modeling➡️️️Neural➡️️️Drop Down➡️️️KFold➡️️️Number of
+Folds➡️️️Drop Down➡️️️Redo➡️️️Redo Analysis | Relaunch Analysis
+Analyze➡️️️Predictive Modeling️➡️️️Partition➡️️️Method➡️️️Drop Down➡️️️Decision
+Tree➡️️️Validation Portion➡️️️0.3➡️️️Split | Prune</p>
+<p>Analyze➡️️️Screening➡️️️Explore Outliers | Explore Missing Values</p>
+<p>Analyze➡️️️Multivariate Methods➡️️️Multivariate➡️️️Multivariate➡️️️Drop
+Down➡️️️Color Maps Analyze➡️️️Multivariate
+Methods➡️️️Multivariate➡️️️Multivariate➡️️️Drop Down➡️️️Parallel Coord Plot
+Analyze➡️️️Multivariate Methods➡️️️Multivariate➡️️️Multivariate➡️️️Drop
+Down➡️️️Ellipsoid 3D Plot Analyze➡️️️Multivariate
+Methods➡️️️Multivariate➡️️️Scatterplot Matrix➡️️️Drop Down➡️️️Fit Line | Density
+Ellipses | Shaded Ellipses | Show Correlations Analyze➡️️️Multivariate
+Methods➡️️️Multivariate➡️️️Outlier Analysis➡️️️Mahalanobis Distances</p>
+<p>Graph➡️️️Graph Builder➡️️️Map Shape | Page | Overlay Graph➡️️️Graph
+Builder➡️️️Line Of Fit➡️️️Confidence➡️️️Fit | Prediction | RMSE | R2 |
+Equation Graph➡️️️Graph Builder➡️️️Right Click➡️️️Map Shapes➡️️️Show Missing
+Shapes Graph➡️️️Graph Builder➡️️️Right Click➡️️️Graph➡️️️Background Map…➡️️️Street
+Map Service Graph➡️️️Graph Builder➡️️️Right Click➡️️️Swap</p>
+<p>Graph➡️️️Scatterplot Matrix</p>
+<p>Graph➡️️️Scatterplot 3D➡️️️Normal Contour Ellipsoids</p>
+<p>Tools➡️️️Arrow | Selection | Grabber | Annotate | Line | Polygon</p>
+<p>Add-Ins➡️️️Gantt Chart➡️️️Launch Using Current Data Table ——Task Names
+——Start Dates ——Group Tasks by ——Order Tasks by ——% of Task Done ——End
+Dates Add-Ins➡️️️Parker Analysis ——Variables ——Label Add-Ins➡️️️Spatial Data
+Analysis</p>
+<p>View➡️️️Add-Ins…➡️️️Registered Add-Ins:➡️️️Tick Enabled | Untick Enabled
+View➡️️️Add-Ins…➡️️️Registered Add-Ins:➡️️️Load Order:
+View➡️️️Add-Ins…➡️️️Registered Add-Ins:➡️️️Unregister View➡️️️Create Web
+Report</p>
+<p>Help➡️️️JMP Documentation Library | Discovering JMP | New Features |
+Quick Reference Card | Menu Card | Sample Data Library Help➡️️️Tip of the
+Day | Sample Data</p>
+<p>Command + Z | Command + Shift + Z</p>
+<p>Multiple Select➡️️️Tables➡️️️Transpose Multiple Select➡️️️Right Click➡️️️New
+Formula Column➡️️️Combine➡️️️Sum | Difference Multiple Select➡️️️Right
+Click➡️️️New Formula Column➡️️️Character➡️️️Concatenate with Space</p>
+<p>Table Top Right Click➡️️️Column Info…➡️️️Format➡️️️Drop Down➡️️️Fixed
+Dec➡️️️Dec Right Click➡️️️Column Info…➡️️️Data Type➡️️️Drop
+Down➡️️️Numeric➡️️️Modeling Type➡️️️Continuous Right Click➡️️️Column
+Properties➡️️️Informative Missing Right Click➡️️️Sort➡️️️Ascending |
+Descending</p>
+<p>Left Right Click➡️️️Label/Unlabel | Hide/Unhide | Exclude/Unexclude</p>
+<p>Middle Right Click➡️️️Hide and Exclude | Exclude/Unexclude |
+Hide/Unhide | Label/Unlabel</p>
+<p>Right Right Click➡️️️Fill➡️️️Fill to end of table | Fill to row…</p>
+<p>Graph Right Click➡️️️Customize…➡️️️+➡️️️Templates➡️️️Y Function Right
+Click➡️️️Customize…➡️️️+➡️️️H Line (Y) Right Click➡️️️Formula…</p>
+<p>Map Right Click➡️️️Transparency… | Fill Pattern… | Gradient… | Revert
+Right Click➡️️️Map Shapes➡️️️Show Missing Shapes Right
+Click➡️️️Graph➡️️️Background Map… Right Click➡️️️Gradient…➡️️️Scale Type</p>
+Chart Right Click➡️️️Count, ascending | Count, descending Right
+Click➡️️️Order By➡️️️Swap Right Click➡️️️Pie➡️️️Label➡️️️Label by Value | Label by
+Percent of Total Values | Label by Row Right Click➡️️️Transparency… | Fill
+Color | Fill Pattern… | Revert Right Click➡️️️Replace Text…
+</details>
+<details>
+<summary>
+<strong><em>Cornell Microsoft Program</em></strong>
+</summary>
+<p><strong>Word</strong></p>
+<p>Word Word➡️️️Preferences…➡️️️Authoring and Proofing Tools➡️️️View➡️️️Show in
+Document➡️️️Untick Field codes instead of values | Untick Text boundaries
+Word➡️️️Preferences…➡️️️Authoring and Proofing Tools➡️️️View➡️️️Ribbon➡️️️Tick
+Show developer tab Word➡️️️Preferences…➡️️️Authoring and Proofing
+Tools➡️️️AutoCorrect➡️️️AutoFormat As You Type➡️️️Automatically as you
+type➡️️️Hyphens (–) with dash (—)</p>
+<p>Word➡️️️Insert➡️️️Break➡️️️Page Break | Column Break
+Word➡️️️Insert➡️️️Break➡️️️Section Break (Continuous)
+Word➡️️️Insert➡️️️Equation➡️️️Matrix➡️️️Right Click➡️️️Insert | Delete</p>
+<p>Word➡️️️Format➡️️️Font</p>
+<p>Home➡️️️Line and Paragraph Spacing➡️️️Drop Down➡️️️Line Spacing
+Options…➡️️️Indents and Spacing➡️️️Spacing➡️️️Before… | After…</p>
+<p>Layout➡️️️Align</p>
+<p>References➡️️️Table of Contents➡️️️Add Text➡️️️Drop Down➡️️️Do Not Show in
+Table of Contents | Level 1 | Level 2 | Level 3 References➡️️️Table of
+Contents➡️️️Update Table References➡️️️Insert Endnote | Insert Citation |
+Insert Caption | Insert Table of Figures</p>
+<p>Review➡️️️Protect➡️️️Protect Document➡️️️Protection Review➡️️️Changes➡️️️Drop
+Down➡️️️Accept | Reject | Previous Change | Next Change</p>
+<p>Developer➡️️️Text Box | Check Box | Combo Box | Options | Frame |
+Shading➡️️️Protect Form</p>
+<p>Shape Format➡️️️Edit Shape➡️️️Change Shape Shape Format➡️️️Shape Fill➡️️️No
+Fill Shape Format➡️️️Shape Outline➡️️️No Outline</p>
+<p>Right Click➡️️️Toggle Field Codes Right Click➡️️️Fonts…➡️️️Effects</p>
+<p>Command + 1 = 1 Command + 5 = 1.5 Command + 2 = 2</p>
+<p>Command + + = subscript¬¬ Command + Shift + + = superscript</p>
+<p>Alt/Option + = = ≠ <br> <br></p>
+<p><strong>Powerpoint</strong></p>
+<p>Home➡️️️Section➡️️️Add Section</p>
+<p>Home➡️️️Arrange➡️️️Reorder Objects Home➡️️️Arrange➡️️️Position Objects➡️️️Align
+| Rotate Home➡️️️Arrange➡️️️Selection Pane…</p>
+<p>Home➡️️️Quick Styles</p>
+<p>Insert➡️️️Slides From➡️️️Other Presentations… | Outline Insert➡️️️New
+Slide➡️️️Drop Down➡️️️Duplicate Slide | Outline… | Reuse Slides…
+Insert➡️️️Audio➡️️️Audio Browser… | Audio from File… | Record Audio
+Insert➡️️️Shapes➡️️️Drop Down➡️️️Rounded Rectangle➡️️️Shape Fill | Shape Outline
+Insert➡️️️Zoom➡️️️Drop Down➡️️️Slide Zoom Insert➡️️️Action➡️️️Drop Down➡️️️Hyperlink
+to:➡️️️Tick Highlight click Insert➡️️️Action➡️️️Drop Down➡️️️Hyperlink to:➡️️️Tick
+Highlight when mouse over Insert➡️️️Object➡️️️Tick Display as icon➡️️️From
+File…➡️️️Link | Action</p>
+<p>Slide Show➡️️️Presenter View</p>
+<p>View➡️️️Slide Master</p>
+<p>Right Click on Background➡️️️Format Background… Right Click on
+Object➡️️️Hyperlink➡️️️Edit Hyperlink…➡️️️Mouse Click | Mouse Over➡️️️Hyperlink
+to: Right Click on Text➡️️️Hyperlink➡️️️This Document➡️️️Slide Titles <br>
+<br></p>
+<p><strong>Excel</strong></p>
+<p>Excel File➡️️️Options➡️️️Advanced➡️️️Display options for this
+workbook:➡️️️Untick Show sheet tabs File➡️️️Options➡️️️Advanced➡️️️Display
+options for this worksheet:➡️️️Untick Show row and column headers
+File➡️️️Preferences…➡️️️View➡️️️Show in Workbook➡️️️Untick Show sheet tabs
+File➡️️️Preferences…➡️️️View➡️️️Show in Workbook➡️️️Untick Show row and column
+headers File➡️️️New from Template…➡️️️Search➡️️️Gantt File➡️️️New from
+Template…➡️️️Search➡️️️Create</p>
+<p>Edit➡️️️Fill➡️️️Series…➡️️️Series in➡️️️Rows | Columns
+Edit➡️️️Fill➡️️️Series…➡️️️Series in➡️️️Type➡️️️Linear | Growth | Date | AutoFill
+Edit➡️️️Fill➡️️️Series…➡️️️Series in➡️️️Step value: | Stop value:
+Edit➡️️️Find➡️️️Replace…➡️️️Find what:➡️️️Replace with:</p>
+<p>Home➡️️️Font➡️️️Drop Down➡️️️Playbill Home➡️️️Fill Color | Font Color➡️️️Drop
+Down➡️️️Double Click on Format Painter Home➡️️️Wrap Text➡️️️Drop Down➡️️️Wrap
+Text | Shrink Text to Fit Home➡️️️Conditional Formatting➡️️️Highlight Cells
+Rules➡️️️Text that Contains | Duplicate Values Home➡️️️Conditional
+Formatting➡️️️New Rule…➡️️️Style: ➡️️️Drop Down➡️️️Classic Home➡️️️Conditional
+Formatting➡️️️Clear Rules➡️️️Clear Rules from Selected Cells | Clear Rules
+form Entire Sheet Home➡️️️Sort &amp; Filter➡️️️Drop Down➡️️️Choose One➡️️️Equals
+| Does Not Equal | Begins With | Does Not Begin With | Ends With | Does
+Not End With | Contains | Does Not Contain Home➡️️️Find &amp; Select➡️️️Go
+To Special…➡️️️Select➡️️️Constants | Blanks Home➡️️️Find &amp;
+Select➡️️️Replace…➡️️️Match case | Find entire cells only</p>
+<p>Insert➡️️️PivotTable➡️️️Tick➡️️️Drag and Drop➡️️️i➡️️️PivotTable
+Analyze➡️️️Refresh Insert➡️️️PivotTable➡️️️Right Click➡️️️Remove Field | Field
+Settings Insert➡️️️PivotTable➡️️️Drop Down Row Labels➡️️️Sort➡️️️Sort by:
+Insert➡️️️PivotTable➡️️️Drop Down Row Labels➡️️️Filter➡️️️By Label: | By Value
+Insert➡️️️PivotTable➡️️️Slicer Insert➡️️️People Graph➡️️️Select your data |
+Title</p>
+<p>Format➡️️️Row | Column➡️️️Hide | Unhide</p>
+<p>Page Layout➡️️️Themes</p>
+<p>Formulas➡️️️Show Formulas Formulas➡️️️Create from Selection
+Formulas➡️️️Name Manager➡️️️New…➡️️️Name:➡️️️Refers to:➡️️️=lambda(parameters,
+calculation)➡️️️Name(parameters)</p>
+<p>Data➡️️️Get Data➡️️️From File➡️️️From PDF Data➡️️️Geography
+Data➡️️️Sort➡️️️Options… Data➡️️️Flash Fill Data➡️️️Remove Duplicates Data➡️️️Data
+Validation➡️️️Settings➡️️️Allow:➡️️️Drop Down➡️️️List➡️️️Source:➡️️️=type…
+Data➡️️️Data Validation➡️️️Error Alert➡️️️Title: | Error message: Data➡️️️Select
+Table➡️️️What-If Analysis➡️️️Drop Down➡️️️Data Table…➡️️️Row input cell… |
+Column input cell… Data➡️️️Solver➡️️️Reports➡️️️Answer | Sensitivity |
+Limits</p>
+<p>Developer➡️️️Button➡️️️Right Click➡️️️Assign Macro…➡️️️Macro name：
+Developer➡️️️Spinner➡️️️Format Control…➡️️️Control➡️️️Cell link:➡️️️Select
+Cell</p>
+<p>Alt + O + A = AutoFormat Alt + O + F = Color Scale Alt + W + F + F =
+Freeze Alt + = = Super Sum</p>
+<p>Command + C + Click Inside Another Cell + Drag Down + Command + V =
+Paste All Command + fn + F3 = Name Manager Command + Shift + Space =
+Select All Command + Shift + T = Insert an AutoSum function Command +
+Shift + Double Click on Bottom Right = Fill All Command + Shift + ↑ =
+Select Up Command + Shift + ↓ = Select Down Command + Shift + ← = Select
+Left Command + Shift + → = Select Right Command + T = <span
+class="math inline">\(...\)</span>… Command + Y = Forward Command + Z =
+Back Command + 1 = Format Cells Command + + = Insert many Rows | Insert
+many Columns Command + ; = Hour/Minute Command + / = Excel Help Command
++ Shift + / = Help</p>
+<p>Control + ` = Show Formula</p>
+<p>fn + option + F11 = Microsoft Visual Basic</p>
+<p>Multiple Select➡️️️Right Click➡️️️Delete…➡️️️Shift cells up Multiple
+Select➡️️️Right Click➡️️️Group | Ungroup</p>
+<p>Option + Enter = Start A New Line In One Column</p>
+<p>Right Click➡️️️Hyperlink…➡️️️Place in This Document➡️️️Type in the cell
+reference: Right Click➡️️️Link➡️️️Place in This Document➡️️️Type the cell
+reference: Right Click➡️️️Link➡️️️Place in This
+Document➡️️️ScreenTip…➡️️️ScreenTip text: Right Click➡️️️Move to Beginning |
+Move Up | Move Down | Move to End Right Click➡️️️Drag mouse to move Right
+Click on Chart➡️️️Change Chart Type Right Click on Chart➡️️️Select Data…</p>
+<p>Shift + F3 / fn + Shift + F3 = Open Insert function window Shift +
+Space = Select the row</p>
+<p>’= = “=” &lt;&gt; = ≠</p>
+<p>(Select Destination Columns Range) + ( = ) + (Command + Enter) =
+Array</p>
+<p>ARRAYFORMULA(SPLIT(FLATTEN(B1:N1&amp;“<em>”&amp;A2:A5&amp;”</em>”&amp;B2:N5),“_“))</p>
+<p>CHAR() CHOOSECOLUMNS() CHOOSEROWS() CONCAT(), TEXTJOIN()
+CONVERT()</p>
+<p>DATEDIF() DROP()</p>
+<p>FILTER() FIND()</p>
+<p>HYPERLINK()</p>
+<p>IF(AE2=““,INDEX(AG:AJ,MATCH(<span
+class="math inline">\(AA2,\)</span>AG:$AG,0),4),AE2)
+IF(COUNTIF(B:B,A1)&gt;0,”Yes”,“No”) IF(ISERROR(VLOOKUP())
+IF(ISNUMBER(MATCH(A2,C:C,0)),“Yes”,“No”) IMAGE()</p>
+<p>LEFT(), RIGHT() LOWER(), UPPER(), PROPER(TRIM())</p>
+<p>MINIFS() MOD()</p>
+<p>PI()</p>
+<p>REGEXEXTRACT(A1,”+”) REGEXEXTRACT(A1,””) REGEXPLACE(A1,””, “”)
+REGEXPLACE(A1,”, “”) REPT() ROUND()</p>
+<p>SEQUENCE() SORT() SORTBY() SPARKLINE(GOOGLE(?, “price”,
+TODAY()+365,TODAY()))</p>
+<p>TAKE() TEXTJOIN(“,”,TRUE,UNIQUE(IF())) TOCOL() TODAY()
+TRANSPOSE()</p>
+<p>VALUE()</p>
+<p>WORKDAY(?-1,SEQUENCE(365))</p>
+<p>{A1:B2;C1:D2}, {A1:B2,C1:D2}</p>
+<p>Excel for Mobile➡️️️Take a picture➡️️️Confirm➡️️️Open Anyway➡️️️Autofit the
+column <br> <br></p>
+<p><strong>VBA</strong></p>
+<p>Shift + Command + I = Step Into Shift + Command + O = Step Over Shift
++ Command + T = Step Out</p>
+<p>Sub Go_to_Step_2_Toggle() Sheets(” “).Select End Sub <br> <br></p>
+<p><strong>SQL</strong></p>
+<p>SELECT (* | Distinct) | (INTO) | (EXTRACT) | (AVG() | COUNT() | SUM()
+| (MIN() | MAX() | SUBSTR() | LENGTH()) | TOP (number | percent)) AS
+FROM WHERE (EXISTS) | (BETWEEN | LIKE | IN) | (IS NULL | IS NOT NULL)
+(INNER | LEFT | RIGHT | OUTER) JOIN ON GROUP BY | ORDER BY (ASC | DESC)
+HAVING LIMIT FETCH FIRST number ROWS ONLY</p>
+<p>CASE WHEN THEN WHEN THEN ELSE END</p>
+<p>INSERT INTO VALUES</p>
+<p>DELETE FROM WHERE (BETWEEN | LIKE | IN) | (IS NULL | IS NOT NULL)</p>
+<p>UPDATE SET WHERE (BETWEEN | LIKE | IN) | (IS NULL | IS NOT NULL)</p>
+CREATE TABLE CREATE TEMP TABLE WITH –
+</details>
+<details>
+<summary>
+<strong><em>Cornell R Program</em></strong>
+</summary>
+<p><strong>R Studio</strong></p>
+<p><a href="https://cran.r-project.org/"
+class="uri">https://cran.r-project.org/</a> + <a
+href="https://r-charts.com/" class="uri">https://r-charts.com/</a></p>
+<p>Packages➡️️️Table of available packages, sorted by date of publication
+| Table of available packages, sorted by
+name➡️️️Package➡️️️Documentation:➡️️️Reference manual: | Vignettes:</p>
+<p>R Studio➡️️️Preferences…➡️️️General➡️️️Workspace➡️️️Untick Restore .RData
+into workspace at startup➡️️️Drop Down➡️️️Never</p>
+<p>File➡️️️New File➡️️️R Script | R Notebook | R Markdown… File➡️️️New
+Directory➡️️️Shiny Web Application | Website using blogdown | Book project
+using bookdown File➡️️️New Project➡️️️Version
+Control➡️️️Git➡️️️Github➡️️️Code➡️️️Drop Down➡️️️Clone➡️️️HTTPS➡️️️Copied➡️️️Repository
+URL:➡️️️Tick Open in new session</p>
+<p>Code➡️️️Insert Section… in R Code➡️️️Insert Chunk in Rmd</p>
+<p>Session➡️️️Restart R</p>
+<p>Build➡️️️Configure Build Tools…➡️️️Build Tools➡️️️Drop Down➡️️️Website</p>
+<p>Help➡️️️Check for Updates | Cheat Sheets | Markdown Quick Reference</p>
+<p>New File➡️️️Drop Down➡️️️Text File➡️️️Save As➡️️️.yml</p>
+<p>Knit➡️️️Drop Down➡️️️Knit to HTML | Knit to PDF | Knit to Word</p>
+<p>Environment➡️️️Clear objects from the workspace</p>
+<p>Build➡️️️Build Website</p>
+<p>Git➡️️️Pull➡️️️Commit➡️️️Commit message➡️️️Commit➡️️️Push</p>
+<p>Drop Down➡️️️New Project… | Open Project… | Open Project in New
+Session… | Close Project</p>
+<p>GitHub➡️️️Search or jump to…➡️️️Users</p>
+<p>GitHub➡️️️Drop Down➡️️️Your repositories➡️️️Repositories | Stars
+GitHub➡️️️Drop Down➡️️️Your repositories➡️️️New➡️️️Add a README file
+GitHub➡️️️Drop Down➡️️️Your repositories➡️️️Click on repository➡️️️Fork
+GitHub➡️️️Drop Down➡️️️Your repositories➡️️️Click on
+repository➡️️️Settings➡️️️General➡️️️Danger Zone➡️️️Change repository visibility
+GitHub➡️️️Drop Down➡️️️Your repositories➡️️️Click on
+repository➡️️️Settings➡️️️Collaborators➡️️️Add people GitHub➡️️️Drop Down➡️️️Your
+repositories➡️️️Click on repository➡️️️Add file➡️️️Drop Down➡️️️Create new
+file➡️️️Type / afterward➡️️️Commit new file GitHub➡️️️Drop Down➡️️️Your
+repositories➡️️️Click on
+repository➡️️️Settings➡️️️General➡️️️Settings➡️️️Repository name GitHub➡️️️Drop
+Down➡️️️Your repositories➡️️️Click on repository➡️️️Settings➡️️️Code and
+automation➡️️️Pages➡️️️Source➡️️️Branch➡️️️Drop Down➡️️️main➡️️️Save GitHub➡️️️Drop
+Down➡️️️Your repositories➡️️️Click on repository➡️️️Settings➡️️️Code and
+automation➡️️️Pages➡️️️Source➡️️️Branch➡️️️Drop Down➡️️️None➡️️️Save</p>
+<p>GitHub➡️️️Access➡️️️Password and authentication➡️️️Enable two-factor
+authentication GitHub➡️️️Settings➡️️️&lt; &gt; Developer settings➡️️️Personal
+access tokens➡️️️Generate new token➡️️️Expiration➡️️️Drop Down➡️️️No
+expiration</p>
+<p>Console➡️install.packages(‘shiny’)
+Console➡️install.packages(‘bookdown’)
+Console➡️install.packages(‘blogdown’)</p>
+<p>Terminal➡️xcode-select –install <br> <br></p>
+<p><strong>R Shiny</strong></p>
+<p><a href="https://shiny.rstudio.com/gallery/"
+class="uri">https://shiny.rstudio.com/gallery/</a> <br> <br></p>
+<p><strong>R Pubs</strong></p>
+<p><a href="https://rpubs.com/" class="uri">https://rpubs.com/</a></p>
+<p>Drop Down➡️️️(View Profile | Edit Profile | Change password) | Sign
+out</p>
+<p>Recently Published➡️️️Delete <br> <br></p>
+<p><strong>R</strong></p>
+<p>df1 = data.frame(…= c(“ ”, “ ”, “ ”), …= c(“ ”, “ ”, “ ”)) df2 =
+data.frame(…= c(“ ”, “ ”, “ ”), …= c(“ ”, “ ”, “ ”))</p>
+<p>paste(…, sep = ” “, collapse = NULL)</p>
+<p>tribble( ~a, ~b, ~c, 1, 2.1, “apple”, 2, 3.2, “orange” ) ## # A
+tibble: 2 × 3 ## a b c<br />
+## <dbl> <dbl> <chr> ## 1 1 2.1 apple ## 2 2 3.2 orange</p>
+<p>tibble( a = 1:2, b = 2.1:3.2, c = c(“apple”,“orange”) ) ## # A
+tibble: 2 × 3 ## a b c<br />
+## <int> <dbl> <chr> ## 1 1 2.1 apple ## 2 2 3.1 orange</p>
+<p>data %&gt;% head() %&gt;% kable()</p>
+<p>data %&gt;% colnames(dt1)[which(names(dt2) == ” “)] = ” ” %&gt;%
+rename( = ) %&gt;% rename_with( , toupper, starts_with(“ ”)) %&gt;%
+unite( , ‘name’, first_name, last_name, sep = ‘ ’) %&gt;% separate( ,
+name, into=c(‘first_name’, ‘last_name’), sep = ‘ ’)</p>
+<p>data %&gt;% inner_join( , by= c(“ ” = “ ”)) %&gt;% left_join( , by=
+c(“ ” = “ ”)) %&gt;% right_join( , by= c(“ ” = “ ”)) %&gt;% full_join( ,
+by= c(“ ” = “ ”)) %&gt;% semi_join( , by= c(“ ” = “ ”)) %&gt;%
+anti_join( , by= c(“ ” = “ ”)) data %&gt;% bind_rows( ) %&gt;% rbind( )
+%&gt;% bind_cols( ) %&gt;% cbind( )</p>
+<p>data %&gt;% arrange(- , - , - ) %&gt;% order( , decreasing = ) %&gt;%
+sort( , decreasing = ) %&gt;% rank( )</p>
+<p>data %&gt;% filter( != ) %&gt;% select(- ,- ,- ) %&gt;% relocate( , ,
+) %&gt;% relocate( , .after = ) %&gt;% relocate( , .before = ) %&gt;%
+group_by( ) %&gt;% summarize( = ) %&gt;% ifelse(is.na( ), , ) %&gt;%
+mutate( = ) %&gt;% setdiff( , ) %&gt;% c(“ ”, “ ”, “ ”) %&gt;% c( , , )
+%&gt;% str_c( , )</p>
+<p>library(ggplot2) ggplot(data, aes(x= , y= ), color=“ ”, size= , fill=
+) + geom_point(aes(color=“ ”, size= , fill= )) + geom_boxplot(alpha= ,
+outlier.alpha= ) + geom_smooth(method= , se= ) + geom_density(alpha= ) +
+geom_histogram() + geom_line() + geom_bar() + ggtitle(“ ”) + xlab(“ ”) +
+ylab(“ ”) + facet_wrap(~ ) + theme()</p>
+<p>range(x, na.rm=TRUE) range(x, finite=TRUE)</p>
+<hr>
+<p>: horizontal line <br>: break line</p>
+<ul>
+<li>: ∙ – : combined — : combined</li>
+</ul>
+<p>-: no change – : combined — : combined</p>
+<ul>
+<li>: ∙ ** : no change *** : no change</li>
+</ul>
+<p><em>: no change <strong>: no change </strong></em>: no change</p>
+<ul>
+<li><em>: italic <strong> </strong>: bold </em>** ***: italic and
+bold</li>
+</ul>
+<p># : big ## : middle ###: small</p>
+<p><code></code>: text in gray</p>
+<p>Command + Shift + m = %&gt;% Option + Command + i = new code chunk
+Option + Command + o = hide Shift + Option + Command + o = unhide Option
++ - = &lt;- | Option + + = ≠ Option + &lt; = ≤ | Option + &gt; = ≥</p>
+<p>setup packages &gt;install.packages(“usethis”)</p>
+<p>setup packages &gt;library(usethis) # install.packages(“usethis”)</p>
+<p>use_git_config function with my username and email as arguments
+&gt;use_git_config(user.name = “jules32”, user.email = “<a
+href="mailto:jules32@example.org"
+class="email">jules32@example.org</a>”)</p>
+<blockquote>
+<p>library(gitcreds) # install.packages(“gitcreds”)</p>
+</blockquote>
+<p>gitcreds_set()</p>
+<blockquote>
+<p>install.packages(“usethis”) use_git_config(user.name = “ls5340”,
+user.email = “<a href="mailto:ls929@cornell.edu"
+class="email">ls929@cornell.edu</a>”) create_github_token()
+install.packages(“gitcreds”) library(gitcreds) gitcreds::gitcreds_set()
+gitcreds_set()</p>
+</blockquote>
+<blockquote>
+<p>library(rmarkdown) rmarkdown::render_site() render_site()</p>
+</blockquote>
+<p>name: “?” navbar: title: “?” left: - text: “?” href: ?.html - text:
+“?” href: ?.html output_dir: “.” output: html_document: theme: cerulean
+highlight: textmate toc: true toc_float: true</p>
+<p>message = FALSE</p>
+<p>Markdown Guide <a href="https://bookdown.org/yihui/rmarkdown/"
+class="uri">https://bookdown.org/yihui/rmarkdown/</a></p>
+<p>Markdown Basics <a
+href="https://rmarkdown.rstudio.com/authoring_basics.html"
+class="uri">https://rmarkdown.rstudio.com/authoring_basics.html</a></p>
+<p>Markdown Basics This document provides quick references to the most
+commonly used R Markdown syntax. See the following articles for more
+in-depth treatment of all the capabilities of R Markdown: R Code Chunks
+Pandoc Markdown Emphasis <em>italic</em> <strong>bold</strong></p>
+<p><em>italic</em> <strong>bold</strong> Headers # Header 1</p>
+<p>## Header 2</p>
+<p>### Header 3 Lists Unordered List: * Item 1 * Item 2 + Item 2a + Item
+2b Ordered List: 1. Item 1 2. Item 2 3. Item 3 + Item 3a + Item 3b R
+Code Chunks R code will be evaluated and printed</p>
+<pre class="r"><code>summary(cars$dist)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    2.00   26.00   36.00   42.98   56.00  120.00</code></pre>
+<pre class="r"><code>summary(cars$speed)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     4.0    12.0    15.0    15.4    19.0    25.0</code></pre>
+<p>Inline R Code There were 50 cars studied Links Use a plain http
+address or add a link to a phrase: <a href="http://example.com"
+class="uri">http://example.com</a></p>
+<p><a href="http://example.com">linked phrase</a> Images Images on the
+web or local files in the same directory: <img
+src="http://example.com/logo.png" /></p>
+<div class="figure">
+<img src="figures/img.png" alt="" />
+<p class="caption">optional caption text</p>
+</div>
+</details>
+<details>
+<summary>
+<strong><em>Cornell Tableau Program</em></strong>
+</summary>
+<p><strong>Tableau</strong></p>
+<p><a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg"
+class="uri">https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg</a></p>
+<p><strong>Tutorials</strong></p>
+<p><a href="https://public.tableau.com/en-us/s/resources"
+class="uri">https://public.tableau.com/en-us/s/resources</a></p>
+<p><strong>Resources</strong></p>
+<p><a
+href="https://help.tableau.com/current/pro/desktop/en-us/functions_all_alphabetical.htm"
+class="uri">https://help.tableau.com/current/pro/desktop/en-us/functions_all_alphabetical.htm</a></p>
+<p><strong>Functions</strong></p>
+<p><a
+href="https://www.tableau.com/data-insights/dashboard-showcase?build=20214.22.0108.1039&amp;edition=pro&amp;lang=en-us&amp;platform=mac&amp;version=2021.4"
+class="uri">https://www.tableau.com/data-insights/dashboard-showcase?build=20214.22.0108.1039&amp;edition=pro&amp;lang=en-us&amp;platform=mac&amp;version=2021.4</a></p>
+<p><strong>Dashboard Showcase</strong></p>
+<p><a href="https://www.youtube.com/watch?v=6eXdGJCQ7Oc"
+class="uri">https://www.youtube.com/watch?v=6eXdGJCQ7Oc</a></p>
+<p><strong>Speed Charting</strong></p>
+<p><a href="https://public.tableau.com/app/discover/viz-of-the-day"
+class="uri">https://public.tableau.com/app/discover/viz-of-the-day</a></p>
+<p><strong>Viz of the Day</strong></p>
+<ul>
+<li><p><a href="https://exchange.tableau.com/accelerators"
+class="uri">https://exchange.tableau.com/accelerators</a></p>
+<p><strong>Accelerators</strong></p></li>
+<li><p><a href="https://exchange.tableau.com/extensions"
+class="uri">https://exchange.tableau.com/extensions</a></p>
+<p><strong>Dashboard Extensions</strong></p></li>
+<li><p><a href="https://exchange.tableau.com/connectors"
+class="uri">https://exchange.tableau.com/connectors</a></p>
+<p><strong>Connectors</strong></p></li>
+</ul>
+<p>My Tableau Repository➡️️️Logs | Shapes</p>
+<p>Drag tables here➡️️️Show Start Page➡️️️Connect➡️️️Saved Data
+Sources➡️️️Sample – Superstore Save | Refresh Data Source Drag tables
+here➡️️️Show Start Page➡️️️Connect➡️️️To a File➡️️️Microsoft Excel | More… Drag
+tables here➡️️️Show Start Page➡️️️Connect➡️️️To a Server➡️️️Google Drive |
+More…</p>
+<p>Connections➡️️️Add Connections➡️️️Data Source List➡️️️Drop Down➡️️️Edit
+Connection… | Rename | Remove</p>
+<p>Sheets➡️️️Search➡️️️Enter Sheet Name➡️️️Exact | Contains | Starts with
+Sheets➡️️️Tick Cleaned with Data Interpreter</p>
+<p>+New Worksheet (Sheet)</p>
+<p> HIGH Worksheet➡️️️Copy➡️️️Image… | Data | Crosstab
+Worksheet➡️️️Export➡️️️Image… | Data… | Crosstab to Excel
+Worksheet➡️️️Actions…➡️️️Add Action➡️️️Drop Down➡️️️Go to
+URL…➡️️️Name➡️️️Insert➡️️️Drop Down➡️️️Source Sheets➡️️️Run action on➡️️️Select |
+Menu➡️️️URL➡️️️Insert➡️️️Drop Down Worksheet➡️️️Show Title | Show Caption | Show
+Summary Worksheet➡️️️Describe Sheet…</p>
+<p>Analysis➡️️️Untick Aggregate Measures Analysis➡️️️Stack Marks➡️️️On | Off
+Analysis➡️️️Table Layout➡️️️Show Field Labels For Columns
+Analysis➡️️️Totals➡️️️Show Row Grand Totals | Show Column Grand Totals
+Analysis➡️️️Totals➡️️️Total All Using➡️️️&gt;➡️️️Sum | Average | Minimum |
+Maximum Analysis➡️️️Legends | Filters | Highlights | Parameters
+Analysis➡️️️Create Calculated Field… Analysis➡️️️Edit Calculated Field</p>
+<p>Map➡️️️Background Maps | Background Images➡️️️Add Mapbox Map… Map➡️️️Edit
+Locations…➡️️️Your Data | Matching Location Map➡️️️Map Legend➡️️️Background
+Layers…➡️️️Map Layers➡️️️Tick Streets, Highways, Routes Map➡️️️Map Legend➡️️️️Map
+Options…➡️️️️Tick Show Map Scale</p>
+<p>Format➡️️️️Font… | Alignment… | Shading… | Borders… | Lines…</p>
+<p>Server➡️️️️Tableau Public➡️️️️Save to Tableau Public… | Save to Tableau
+Public As… Server➡️️️️Tableau Public➡️️️️Manage My Profile…</p>
+<p> HIGH MIDDLE Command + S = Save = File➡️️️️Save Command + D = New Data
+Source = Data➡️️️️New Data Source Command + T = New Worksheet =
+Worksheet➡️️️️New Worksheet</p>
+<p>New Worksheet➡️️️️Drop Down➡️️️️New Worksheet | New Dashboard | New Story
+Clear Sheet➡️️️️Drop Down➡️️️️Clear Sheet Swap Rows and Columns | Sort…
+ascending by | Sort… descending by Highlight➡️️️️Drop Down➡️️️️Disable
+Workbook Highlighting | Disable Sheet Highlighting Fit➡️️️️Drop
+Down➡️️️️Standard | Fit Width | Fit Height | Entire View Share Workbook
+With Others | Show Me</p>
+<p> LOW LEFT Data➡️️️️Data Source List➡️️️️Edit Data Source
+Filters…➡️️️️Add…➡️️️️Select a field:</p>
+<p>Data➡️️️️Search | Filter by | View Data Data➡️️️️Drop Down➡️️️️Create
+Calculated Field… | Create Parameter… Data➡️️️️Drop Down➡️️️️Hide All Unused
+Fields | Show Hidden Fields Data➡️️️Drop Down➡️️️Expand All | Collapse
+All</p>
+<p>Data➡️️️Tables➡️️️Drop Down | Right Click➡️️️Show Filter Data➡️️️Tables➡️️️Drop
+Down | Right Click➡️️️Duplicate | Rename | Hide Data➡️️️Tables➡️️️Drop Down |
+Right Click➡️️️Create➡️️️Calculated Field… Data➡️️️Tables➡️️️Drop Down | Right
+Click➡️️️Create➡️️️Parameter…➡️️️Allowable values:➡️️️Range➡️️️Minimum: | Maximum:
+| Step size: Data➡️️️Tables➡️️️Drop Down | Right
+Click➡️️️Create➡️️️Parameter…➡️️️Allowable values:➡️️️Range➡️️️Minimum: | Maximum:
+| Step size: Data➡️️️Tables➡️️️Drop Down | Right Click➡️️️Transform➡️️️Split |
+Custom Split… | Make date Data➡️️️Tables➡️️️Drop Down | Right Click➡️️️Convert
+to Continuous | Convert to Discrete Data➡️️️Tables➡️️️Drop Down | Right
+Click➡️️️Convert to Measure | Convert to Dimension Data➡️️️Tables➡️️️Drop Down
+| Right Click➡️️️Change Data Type Data➡️️️Tables➡️️️Drop Down | Right
+Click➡️️️Geographic Role Data➡️️️Tables➡️️️Drop Down | Right Click➡️️️Default
+Properties➡️️️Number Format… Data➡️️️Tables➡️️️Drop Down | Right Click➡️️️Group
+by➡️️️Folder Data➡️️️Tables➡️️️Drop Down | Right Click➡️️️Hierarchy➡️️️Create
+Hierarchy… | Remove Hierarchy Data➡️️️Tables➡️️️Drop Down | Right
+Click➡️️️Describe…➡️️️Load</p>
+<p>Data➡️️️Parameters➡️️️Drop Down | Right Click➡️️️Show Parameter</p>
+<p>Data➡️️️Data Source➡️️️Right Click➡️️️Extract Data… | Use Extract
+Data➡️️️Data Source➡️️️Right Click➡️️️Extract➡️️️Refresh Data➡️️️Data Source➡️️️Copy
+Values Data➡️️️Data Source➡️️️Split | Custom Split</p>
+<p>Analytics➡️️Model➡️️️Average with 95% CI | Median with 95% CI➡️️️Table |
+Pane | Cell Analytics➡️️️Model➡️️Trend Line➡️️Linear | Logarithmic |
+Exponential | Polynomial | Power Analytics➡️️Model➡️Forecast➡️Forecast
+Analytics➡️️Model➡️Cluster➡️Cluster➡️Marks➡️Drop Down➡️Describe
+clusters…➡️Summary➡️Show scaled centers
+Analytics➡️️Model➡️Cluster➡️Cluster➡️Marks➡️Drop Down➡️Describe
+clusters…➡️Models Analytics➡️️Model➡️Cluster➡️Cluster➡️Marks➡️Drop
+Down➡️Edit clusters…➡️Variables | Number of Clusters</p>
+<p>Analytics➡️️️Custom➡️️️Reference Line➡️️️Add a Reference Line➡️️️Table | Pane
+| Cell Analytics➡️️️Custom➡️️️Reference Band➡️️️Add a Reference Band➡️️️Table |
+Pane | Cell➡️️️Band From | Band To➡️️️Value: | Label:
+Analytics➡️️️Custom➡️️️Distribution Band➡️️️Computation➡️️️Label:➡️️️Drop
+Down➡️️️Custom Analytics➡️️️Custom➡️️️Distribution
+Band➡️️️Formatting:➡️️️Line:➡️️️Drop Down➡️️️More colors
+Analytics➡️️️Custom➡️️️Distribution Band➡️️️Formatting:➡️️️Fill Below</p>
+<p> MIDDLE Columns | Rows➡️️️Drop Down➡️️️Filter… | Show Filter Columns |
+Rows➡️️️Drop Down➡️️️Format… ➡️️️Axis➡️️️Scale➡️️️Numbers:➡️️️Number
+(Custom)➡️️️Decimal places:➡️️️Type 0 Columns | Rows➡️️️Drop
+Down➡️️️Measure➡️️️Minimum | Maximum | Count | Count (Distinct) •
+Columns➡️️️Drag and Drop Longitude (generated) • Columns➡️️️Quick Table
+Calculation➡️️️Running Total | Difference | Percent Difference | Percent
+of Total | Rank | Percentile | Moving Average • Columns➡️️️Drop
+Down➡️️️Discrete | Continuous • Columns➡️️️Drop Down➡️️️Compute Using</p>
+<p>• Rows➡️️️Drag and Drop Latitude (generated) • Rows➡️️️Quick Table
+Calculation➡️️️Running Total | Difference | Percent Difference | Percent
+of Total | Rank | Percentile | Moving Average • Columns➡️️️Drop
+Down➡️️️Discrete | Continuous • Rows➡️️️Drop Down➡️️️Compute Using</p>
+<p>*Columns➡️️️Category<span class="math inline">\(Subcategory:
+Subcategory➡️️️Filter…➡️️️Top➡️️️Sort… ascending by | Sort… descending
+by➡️️️(Partial Ranking) *Columns➡️️️Subcategory\)</span>Category:
+Category➡️️️Filter…➡️️️Top➡️️️Sort… ascending by | Sort… descending
+by➡️️️(Integral Ranking)</p>
+<p> LOW MIDDLE Pages(Year) Filters(Measure Names) Filters➡️️️Edit
+Filter…➡️️️Top➡️️️By field:➡️️️Drop Down➡️️️Top | Bottom➡️️️Drop Down➡️️️Create a
+New Parameter…➡️️️Allowable values:➡️️️Range➡️️️Minimum: | Maximum: | Step
+size: Filters➡️️️Show Filter | Show Highlighter Filters➡️️️Drop Down➡️️️Apply
+to Worksheets➡️️️All Using Related Data Filters➡️️️Drop Down➡️️️Create Set…
+Filters➡️️️Drop Down➡️️️Discrete | Continuous Filters➡️️️Drop Down➡️️️Remove</p>
+<p>Marks(Measure Names) Marks➡️️️Drop Down➡️️️Bar | Line | Area | Square |
+Circle | Shape | Text | Map | Pie | Gantt Bar | Polygon | Density
+Marks➡️️️Color➡️️️Edit Colors➡️️️Select Color Palette:➡️️️Drop Down➡️️️Blue |
+Orange | Green | Red | Purple | Brown | Gray➡️️️Stepped Color n Steps |
+Reversed Marks➡️️️Color➡️️️Effects➡️️️Border: | Halo:➡️️️Drop Down➡️️️None
+Marks➡️️️Label➡️️️Font➡️️️Match Mark Color Marks➡️️️Label➡️️️Tick Show mark labels
+Marks➡️️️Label➡️️️Label Appearance➡️️️Text:➡️️️… Marks➡️️️Label➡️️️Options➡️️️Tick
+Allow labels to overlap other marks Marks➡️️️Tooltip➡️️️Insert➡️️️Sheets •
+Marks<span class="math inline">\(Color (Choropleth) • Marks\)</span>Size
+(Proportion) • Marks<span class="math inline">\(Label (Visible) •
+Marks\)</span>Detail (Invisible) • Marks$Tooltip (Edit)
+Marks➡️️️Shape➡️️️More Shapes…</p>
+<p>Marks➡️️️Drop Down | Right Click➡️️️Format…➡️️️Font➡️️️Pane: Marks➡️️️Drop Down
+| Right Click➡️️️Measure ( )➡️️️Sum | Average | Median | Count | Count
+(Distinct) Marks➡️️️Drop Down | Right Click➡️️️Quick Table
+Calculation➡️️️Running Total | Difference | Percent Difference | Percent
+of Total | Rank | Percentile | Moving Average Marks➡️️️Drop Down | Right
+Click➡️️️Compute Using➡️️️Table (across) | Table (down) | Table</p>
+<p> LOW RIGHT Graph➡️️️Drop Down Section➡️️️Data source order | Alphabetic
+| (Field | Nested) Graph➡️️️Right Click on Section➡️️️Sort ascending | Sort
+descending Graph➡️️️Right Click on Section➡️️️Filter… | Show filter | Sort…
+Graph➡️️️Right Click on Section➡️️️Format… | Rotate labels</p>
+<p>Graph➡️️️Right Click on Category➡️️️Keep only | Exclude | Hide
+Graph➡️️️Right Click on Category➡️️️Format… | Rotate Label Graph➡️️️Right
+Click on Category➡️️️Edit Alias…</p>
+<p>Graph➡️️️Right Click on Item➡️️️Mark Label➡️️️Always Show | Never Show
+Graph➡️️️Right Click on Item➡️️️Annotate➡️️️Mark… | Point… | Area…</p>
+<p>Graph➡️️️Move the Top Left Corner of the Others to the Value
+Graph➡️️️Right Click on Axis➡️️️Edit Axis…➡️️️Range➡️️️Fixed➡️️️Fixed start➡️️️Fixed
+end Graph➡️️️Right Click on Axis➡️️️Synchronize Axis Graph➡️️️Right Click on
+Axis➡️️️Move marks to front | Move marks to back Graph➡️️️Right Click on
+Axis➡️️️Add Reference Line | Swap Reference Line Fields | Edit Reference
+Line | Remove Reference Line</p>
+<p>Graph➡️️️Hover➡️️️&gt;➡️️️Rectangular Selection (A) | Radial Selection (S)
+| Lasso Selection (D)➡️️️Group Members➡️️️Right Click on LOW LEFT➡️️️Edit
+Group… Graph➡️️️Right Click➡️️️Format… Graph➡️️️Right Click➡️️️Annotate➡️️️Mark… |
+Point… | Area… Graph➡️️️Right Click➡️️️Trend Lines…➡️️️Show Trend Lines
+Graph➡️️️Right Click➡️️️Drop Lines…➡️️️Show Drop Lines Graph➡️️️Right Click➡️️️Map
+Options…</p>
+<p>Graph➡️️️Drop Down Filter➡️️️Apply to Worksheets➡️️️All Using Related Data
+Sources | All Using This Data Source</p>
+<p>Graph➡️️️Drop Down Legends…➡️️️Edit Legends… | Format Legends… | Title |
+Edit Title…</p>
+<p>Graph➡️️️Drop Down Parameter➡️️️Edit Parameter… | Show Title | Edit
+Title… | Format Parameters… Graph➡️️️Drop Down Parameter➡️️️Single Value
+List | Compact List | Slider | Type In</p>
+<p>+New Dashboard (Dashboard)</p>
+<p> HIGH Dashboard➡️️️Show Grid | Show Title Dashboard➡️️️Actions…➡️️️Add
+Action➡️️️Drop Down➡️️️Filter… | Highlight…➡️️️Run action on➡️️️Select➡️️️Clearing
+the selection will➡️️️Keep filtered values➡️️️Filter➡️️️Selected
+fields➡️️️Source Field➡️️️Drop Down Dashboard➡️️️Actions…➡️️️Add Action➡️️️Drop
+Down➡️️️Go to URL…➡️️️Name➡️️️Insert➡️️️Drop Down➡️️️Source Sheets➡️️️Run action
+on➡️️️Select | Menu➡️️️URL➡️️️Insert➡️️️Drop Down</p>
+<p>Map➡️️️Background Maps➡️️️Light | Normal | Dark | Streets | Outdoors |
+Satellites | Offline Map➡️️️Background Maps➡️️️Add Mapbox Map… | Add WMS
+Map… | Manage Maps Map➡️️️Background Images Map➡️️️Geocoding➡️️️Import Custom
+Geocoding Map➡️️️Map Layers…➡️️️Data Layer➡️️️Layer:➡️️️Drop Down Map➡️️️Map
+Options…➡️️️Tick Show Map Scale</p>
+<p>Format➡️️️Animations</p>
+<p>Server➡️️️Tableau Public➡️️️Save to Tableau Public… | Save to Tableau
+Public As…</p>
+<p> HIGH MIDDLE Drop Down➡️️️Standard | Fit Width | Fit Height | Entire
+View</p>
+<p> LOW LEFT Objects➡️️️Tick Show dashboard title</p>
+<p> LOW RIGHT Use as Filter | Don’t Use as Filter</p>
+<p>Double Click on Title➡️️️Edit Title Double Click on Caption➡️️️Edit
+Caption</p>
+<p>More Options➡️️️Tick Title | Untick Title More Options➡️️️Tick Caption |
+Untick Caption More Options➡️️️Legends More Options➡️️️Floating More
+Options➡️️️Floating Order➡️️️(Bring to Front | Bring Forward) | (Send to
+Back | Send Backward)</p>
+<p>Right Click➡️️️Format… Right Click➡️️️Format text object…➡️️️Text
+Object➡️️️Alignment:➡️️️Drop Down➡️️️Horizontal | Direction | Vertical | Wrap
+Right Click➡️️️Format text object…➡️️️Close Format Text➡️️️Layout➡️️️Border |
+Background Right Click➡️️️Tick Header | Untick Show Header</p>
+<p>+New Story (Story)</p>
+<p> HIGH Story➡️️️Format</p>
+<p>Server➡️️️Tableau Public➡️️️Save to Tableau Public… | Save to Tableau
+Public As…</p>
+<p> LOW LEFT Story➡️️️New Story point➡️️️Blank | Duplicate Story➡️️️New Story
+point➡️️️Drag to add text</p>
+<p>Layout➡️️️Navigator Style➡️️️(Caption boxes | Numbers | Dots | Arrows
+only) | (Tick Show arrows | Untick Show arrows)</p>
+<p>Size➡️️️Drop Down➡️️️Drop Down➡️️️Automatic</p>
+<p>Tableau Prep ➕➡️️️Clean Step</p>
+<p>Left Click on Step➡️️️(Filter Values… | Rename Fields… | Create
+Calculated Fields…) | (Show profile pane | Show data grid | Show list
+view) Left Click on Step➡️️️Changes( ) Right Click on Step➡️️️(Rename | Add
+Description | Edit Color) | (Copy | Preview in Tableau Desktop) |
+Remove</p>
+<p>Type of Variables In Blue: Discrete In Green: Continuous</p>
+<p>+: expand -: collapse</p>
+<p>Show Me: For…try</p>
+<p>IFELSE IF [Walkability Score] &gt;=2.5 AND [Walkability Score] &lt;3
+then ‘(2.5-3) High’ ELSEIF [Walkability Score] &gt;=1.5 AND [Walkability
+Score] &lt;2.5 then ‘(1.5-2.5) Middle’ ELSEIF [Walkability Score] &gt;=1
+AND [Walkability Score] &lt;1.5 then ‘(1-1.5) Low’ END</p>
+<p>NULL IF ISNULL([Field]) IF NOT ISNULL([Field]) IFNULL([Amount],0)</p>
+<p>Blank “” | “ ” ➡️️️Text</p>
+<p>Left Digit LEFT(str([Lead Digit]),1)</p>
+<p>Benford’s Law log(int([Left Digit])+1)-log(int([Left Digit]))</p>
+<p>Tableau Public Settings➡️️️Tick Show Viz on Profile | Tick Show Sheets
+| Tick Allow Access etails&gt;</p>
+<details>
+<summary>
+<strong><em>Cornell Webflow Program</em></strong>
+</summary>
+<p><strong>Webflow</strong></p>
+<p>Toggle Preview | (Desktop | Tablet | Mobile landscape | Mobile
+portrait) | (Canvas settings) | Export Code | Share project | Publish |
+(Style | Element Settings | Style Manager | Interactions)</p>
+<p>Publish➡️️️Drop Down➡️️️Tick➡️️️Publish to Selected Domains Publish➡️️️Drop
+Down➡️️️Unpublish</p>
+<p>Style➡️️️Selector➡️️️Drop Down➡️️️None | Hover</p>
+<p>Style➡️️️Layout➡️️️Display➡️️️Block
+Style➡️️️Layout➡️️️Display➡️️️Flex➡️️️Direction➡️️️Horizontal | Vertical</p>
+<p>Style➡️️️Spacing➡️️️Margin➡️️️Shift + Drag the Number = change in all
+directions Style➡️️️Spacing➡️️️Margin➡️️️Option + Drag the Number = change up
+&amp; down</p>
+<p>Style➡️️️Size➡️️️Overflow➡️️️Visible | Hidden | Scroll</p>
+<p>Style➡️️️Position➡️️️Position➡️️️Drop Down➡️️️Static | Relative | Absolute |
+Fixed | Sticky</p>
+<p>Style➡️️️Typography➡️️️Font | Weight | Size | Height | Color | Align |
+Style</p>
+<p>Style➡️️️Backgrounds➡️️️image &amp; gradient➡️️️+➡️️️Type➡️️️Image | Linear
+gradient | Radial gradient➡️️️Start Color | End Color➡️️️(Tick Repeat |
+Untick Repeat) | Reverse</p>
+<p>Style➡️️️Borders➡️️️Radius</p>
+<p>Style➡️️️Effects➡️️️Box shadows➡️️️+ Type➡️️️Outside | Inside
+Style➡️️️Effects➡️️️2D &amp; 3D transforms➡️️️+➡️️️Type➡️️️Move | Scale | Rotate |
+Skew Style➡️️️Effects➡️️️Transitions➡️️️+➡️️️Type➡️️️Drop Down</p>
+<p>Element Settings➡️️️Text Field Settings➡️️️Placeholder</p>
+<p>Element Settings➡️️️Form Settings➡️️️State➡️️️Normal | Success | Error</p>
+<p>Element Settings➡️️️Form Settings➡️️️Name➡️️️Email Form Element
+Settings➡️️️Form Settings➡️️️Redirect URL</p>
+<p>Style Manager</p>
+<p>Interactions➡️️️Element trigger➡️️️+➡️️️Mouse click (tap) | Mouse hover |
+Scroll into view➡️️️On 1st click➡️️️Action➡️️️Drop Down➡️️️Custom
+animation➡️️️Start an animation➡️️️Actions➡️️️Right Click➡️️️Change
+target➡️️️Timing➡️️️Set as initial state Interactions➡️️️Element
+trigger➡️️️+➡️️️Page load | Page Scrolled➡️️️When page starts
+loading➡️️️Action➡️️️Drop Down➡️️️Custom animation➡️️️Start an
+animation➡️️️Actions➡️️️Right Click➡️️️Change target➡️️️Timing➡️️️Set as initial
+state</p>
+<p>Add Elements➡️️️Elements➡️️️Layout➡️️️Section | Container | Grid | Columns
+Add Elements➡️️️Elements➡️️️Typography➡️️️Heading | Paragraph | Text Link |
+Text Block | Block | Rich Text) Add Elements➡️️️Elements➡️️️Media➡️️️Image |
+Video | YouTube | Lottie Animation</p>
+<p>Add Elements➡️️️Elements➡️️️Forms➡️️️Form Block</p>
+<p>Add Elements➡️️️Elements➡️️️Components➡️️️Dropdown➡️️️Element
+Settings➡️️️Dropdown Settings➡️️️Menu➡️️️Show➡️️️Tick Open menu on hover |
+Untick Open menu on hover Add
+Elements➡️️️Elements➡️️️Components➡️️️Navbar➡️️️Element Settings➡️️️Link
+Settings➡️️️Page➡️️️Choose a page…</p>
+<p>Add Elements➡️️️Layouts➡️️️Footer➡️️️Footer Dark | Footer Light | Footer
+Subscribe</p>
+<p>Navigator</p>
+<p>Assets➡️️️Add | Upload</p>
+<p>Settings➡️️️General➡️️️Scroll Right Onboarding checklist and prompts |
+Scroll Left Onboarding checklist and prompts</p>
+<p>Select➡️️️Insert Link➡️️️Link Settings</p>
+<p>Command + Control + Space = Emoji Command + E | Command + K = Find
+Command + Return = Selector Command + Shift + P = Preview</p>
+Option + Drag = Duplicate
+</details>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
